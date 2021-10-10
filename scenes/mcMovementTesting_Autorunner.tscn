@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/mainChar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/TestingLevel.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 300 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="testLevel" parent="." instance=ExtResource( 2 )]
+
+[node name="mainChar" parent="." instance=ExtResource( 1 )]
+position = Vector2( 24, 296 )
+
+[node name="Camera2D" type="Camera2D" parent="mainChar"]
+position = Vector2( 240.583, -24.5739 )
+current = true
+
+[node name="worldWrapperThing" type="Area2D" parent="."]
+position = Vector2( 1100, 300 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldWrapperThing"]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]

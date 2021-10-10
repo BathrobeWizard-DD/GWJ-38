@@ -14,7 +14,7 @@ extents = Vector2( 40, 300 )
 position = Vector2( 24, 296 )
 
 [node name="Camera2D" type="Camera2D" parent="mainChar"]
-position = Vector2( 240.583, -24.5739 )
+position = Vector2( -2.41701, 2.4261 )
 current = true
 
 [node name="worldWrapperThing" type="Area2D" parent="."]

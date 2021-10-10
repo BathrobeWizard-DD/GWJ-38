@@ -10,6 +10,8 @@ const RUN_SPEED_MAX = 300
 const JUMP_SPEED = -300
 var velocity = Vector2()
 
+export var speed_modifier: float = 0.7
+
 var isJumping
 var isCrouching
 
@@ -36,6 +38,9 @@ func get_input():
 	var directionHorizontal = 0
 	if moveRight:
 		directionHorizontal += 1
+		$Fire.material.set_shader_param("speed", 2.0)
+	else:
+		$Fire.material.set_shader_param("speed", 0.5)
 	if moveLeft:
 		directionHorizontal -= 1
 #	moveLeftOrRight(directionHorizontal)
@@ -46,11 +51,12 @@ func _physics_process(delta):
 	if (isCrouching):
 		$defaultCollisionShape.set_disabled(true)
 		$AnimatedSprite.set_animation("crouch")
+		velocity.x = RUN_SPEED_MAX * speed_modifier
 	else:
 		$defaultCollisionShape.set_disabled(false)
 		$AnimatedSprite.set_animation("default")
-	
-	velocity.x = RUN_SPEED_MAX
+		velocity.x = RUN_SPEED_MAX
+		
 	velocity.y += GRAVITY * delta
 	if isJumping and is_on_floor():
 		isJumping = false

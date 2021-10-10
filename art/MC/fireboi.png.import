@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mainchar_placeholder.png-944d8ddea513fe1a825e7eb3c64adf2f.stex"
+path="res://.import/fireboi.png-68ee2584a98af776e1cfa153600477a0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/MC/mainchar_placeholder.png"
-dest_files=[ "res://.import/mainchar_placeholder.png-944d8ddea513fe1a825e7eb3c64adf2f.stex" ]
+source_file="res://art/MC/fireboi.png"
+dest_files=[ "res://.import/fireboi.png-68ee2584a98af776e1cfa153600477a0.stex" ]
 
 [params]
 

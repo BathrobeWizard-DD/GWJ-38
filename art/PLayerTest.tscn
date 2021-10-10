@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://art/MC/firehead.png" type="Texture" id=1]
+[ext_resource path="res://art/radial_gradient.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_tex;
+uniform sampler2D grad_tex;
+uniform float speed = 2.0;
+const vec2 center = vec2(0.5, 0.5);
+
+void fragment()
+{
+	float dist_to_center = distance(center, UV);
+	vec4 noise_val = texture(noise_tex, UV * 0.2 / dist_to_center + TIME * speed);
+	vec4 grad_val = texture(grad_tex, UV);
+	vec4 step1 = step(noise_val, grad_val);
+	vec4 new_col = texture(TEXTURE, UV) * step1;
+	new_col.a *= step1.r * step1.g * step1.b;
+	COLOR = new_col;
+}
+"
+
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+seamless = true
+noise = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 1 )
+shader_param/speed = 0.5
+shader_param/noise_tex = SubResource( 5 )
+shader_param/grad_tex = ExtResource( 2 )
+
+[node name="Node2D" type="Sprite"]
+material = SubResource( 6 )
+texture = ExtResource( 1 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mainchar_placeholder.png-944d8ddea513fe1a825e7eb3c64adf2f.stex"
+path="res://.import/radial_gradient.png-d8b42605e083fdf8ae965e97bb5334c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/MC/mainchar_placeholder.png"
-dest_files=[ "res://.import/mainchar_placeholder.png-944d8ddea513fe1a825e7eb3c64adf2f.stex" ]
+source_file="res://art/radial_gradient.png"
+dest_files=[ "res://.import/radial_gradient.png-d8b42605e083fdf8ae965e97bb5334c5.stex" ]
 
 [params]
 

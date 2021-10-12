@@ -64,6 +64,7 @@ func speedUpOrSlowDown(directionMultiplier, speedDelta = RUN_ACCEL):
 		currentRunSpeed + (directionMultiplier * speedDelta),
 		RUN_SPEED_MIN, RUN_SPEED_MAX
 	)
+	print(currentRunSpeed)
 
 func _input(event):
 	character_function_args("get_input", [event])
@@ -94,12 +95,14 @@ func ready_jumping():
 	velocity.y = currentJumpSpeed
 
 func process_running():
+	input_left_right_acceleration_check()
 	pass
 
 func process_crouching():
 	pass
 
 func process_jumping():
+	input_left_right_acceleration_check()
 	if is_on_floor():
 		return switch_state(runningState)
 
@@ -118,17 +121,15 @@ func input_crouching(event):
 		switch_state(runningState)
 
 func input_running(event):
-	input_left_right_acceleration_check(event)
 	input_jumping_check(event)
 	input_crouching_check(event)
 
 func input_jumping(event):
-	input_left_right_acceleration_check(event)
 	input_crouching_check(event)
 
-func input_left_right_acceleration_check(event):
-	var moveRight = event.is_action("moveRight")
-	var moveLeft = event.is_action("moveLeft")
+func input_left_right_acceleration_check():
+	var moveRight = Input.is_action_pressed("moveRight")
+	var moveLeft = Input.is_action_pressed("moveLeft")
 	var directionHorizontal = 0
 	
 	if moveRight:

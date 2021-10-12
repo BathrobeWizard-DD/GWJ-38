@@ -1,9 +1,20 @@
-
 # Godot-specific ignores
+.godot/
 .import/
 export.cfg
 export_presets.cfg
 
 # Mono-specific ignores
 .mono/
-data_*/
+.vs/
+obj/
+
+# Visual Studio Code - specific ignores
+.vscode
+
+# Linux-specific ignores (Dolphin)
+.directory
+*.import
+export/
+
+exports/*

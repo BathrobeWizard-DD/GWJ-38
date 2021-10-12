@@ -7,19 +7,35 @@ extends KinematicBody2D
 const GRAVITY = 600.0
 const RUN_ACCEL = 50
 const RUN_SPEED_MAX = 300
-const JUMP_SPEED = -300
+const REGULAR_JUMP_SPEED = -300
+const FROM_CROUCH_JUMP_SPEED = -400
 var velocity = Vector2()
+
+var currentJumpSpeed = REGULAR_JUMP_SPEED
 
 #var isJumping
 #var isCrouching
 
 var characterState 
-onready var runningState = {"get_input": funcref(self,"input_running"), "ready_state": funcref(self, "ready_running"),
-							 "process_state": funcref(self, "process_running"), "get_state": funcref(self, "state_running")}
-onready var crouchingState = {"get_input": funcref(self,"input_jumping"), "ready_state": funcref(self, "ready_crouching"),
-							 "process_state": funcref(self, "process_crouching"), "get_state": funcref(self, "state_crouching")}
-onready var jumpingState = {"get_input": funcref(self,"input_jumping"), "ready_state": funcref(self, "ready_jumping"),
-							 "process_state": funcref(self, "process_jumping"), "get_state": funcref(self, "state_jumping")}
+onready var runningState = {
+	"get_input": funcref(self,"input_running"),
+	"ready_state": funcref(self, "ready_running"),
+	"process_state": funcref(self, "process_running"),
+	"get_state": funcref(self, "state_running")
+}
+onready var crouchingState = {
+	"get_input": funcref(self,"input_crouching"),
+	"ready_state": funcref(self, "ready_crouching"),
+	"process_state": funcref(self, "process_crouching"),
+	"get_state": funcref(self, "state_crouching")
+}
+onready var jumpingState = {
+	"get_input": funcref(self,"input_jumping"),
+	"ready_state": funcref(self, "ready_jumping"),
+	"process_state": funcref(self, "process_jumping"),
+	"get_state": funcref(self, "state_jumping")
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	switch_state(runningState)
@@ -70,7 +86,7 @@ func ready_crouching():
 
 func ready_jumping():
 	self.position.y -= 2
-	velocity.y = JUMP_SPEED
+	velocity.y = currentJumpSpeed
 
 func process_running():
 	pass
@@ -90,12 +106,20 @@ func state_crouching():
 
 func state_jumping():
 	return "jumping"
+	
+func input_crouching(event):
+	if event.is_action_pressed("jumpUp") && is_on_floor():
+		currentJumpSpeed = FROM_CROUCH_JUMP_SPEED
+		switch_state(jumpingState)
+	if event.is_action_released("crouchDown"):
+		switch_state(runningState)
 
 func input_running(event):
 #	velocity.x = 0
 	var moveRight = event.is_action_pressed("moveRight")
 	var moveLeft = event.is_action_pressed("moveLeft")
 	if event.is_action_pressed("jumpUp") && is_on_floor():
+		currentJumpSpeed = REGULAR_JUMP_SPEED
 		switch_state(jumpingState)
 	if event.is_action_pressed("crouchDown"):
 		switch_state(crouchingState)

@@ -5,12 +5,15 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 const GRAVITY = 600.0
-const RUN_ACCEL = 50
-const RUN_SPEED_MAX = 300
+const RUN_ACCEL = 10
+const INAIR_ACCEL = 2.5
+const RUN_SPEED_MIN = 230
+const RUN_SPEED_MAX = 370
 const REGULAR_JUMP_SPEED = -300
 const FROM_CROUCH_JUMP_SPEED = -400
-var velocity = Vector2()
 
+var velocity = Vector2()
+var currentRunSpeed = (RUN_SPEED_MIN + RUN_SPEED_MAX) / 2
 var currentJumpSpeed = REGULAR_JUMP_SPEED
 
 #var isJumping
@@ -56,9 +59,11 @@ func character_function_args(function, argumentArray):
 	if characterState.has(function):
 		characterState[function].call_funcv(argumentArray)
 
-func moveLeftOrRight(directionMultiplier):
-	velocity.x += directionMultiplier * (abs(velocity.x) + RUN_ACCEL)
-	velocity.x = clamp(velocity.x, -RUN_SPEED_MAX, RUN_SPEED_MAX)
+func speedUpOrSlowDown(directionMultiplier, speedDelta = RUN_ACCEL):
+	currentRunSpeed = clamp(
+		currentRunSpeed + (directionMultiplier * speedDelta),
+		RUN_SPEED_MIN, RUN_SPEED_MAX
+	)
 
 func _input(event):
 	character_function_args("get_input", [event])
@@ -66,7 +71,7 @@ func _input(event):
 func _physics_process(delta):
 	character_function("process_state")
 	
-	velocity.x = RUN_SPEED_MAX
+	velocity.x = currentRunSpeed
 	velocity.y += GRAVITY * delta
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 
@@ -89,14 +94,37 @@ func ready_jumping():
 	velocity.y = currentJumpSpeed
 
 func process_running():
-	pass
+	var moveRight = Input.is_action_pressed("moveRight")
+	var moveLeft = Input.is_action_pressed("moveLeft")
+	
+	var directionHorizontal = 0
+	if moveRight:
+		directionHorizontal += 1
+	if moveLeft:
+		directionHorizontal -= 1
+	if (directionHorizontal != 0):
+		if is_on_floor():
+			speedUpOrSlowDown(directionHorizontal)
+		else:
+			speedUpOrSlowDown(directionHorizontal, INAIR_ACCEL)
 
 func process_crouching():
 	pass
 
 func process_jumping():
 	if is_on_floor():
-		switch_state(runningState)
+		return switch_state(runningState)
+	
+	var moveRight = Input.is_action_pressed("moveRight")
+	var moveLeft = Input.is_action_pressed("moveLeft")
+	
+	var directionHorizontal = 0
+	if moveRight:
+		directionHorizontal += 1
+	if moveLeft:
+		directionHorizontal -= 1
+	if (directionHorizontal != 0):
+		speedUpOrSlowDown(directionHorizontal, INAIR_ACCEL)
 
 func state_running():
 	return "running"
@@ -125,13 +153,6 @@ func input_running(event):
 		switch_state(crouchingState)
 	if event.is_action_released("crouchDown"):
 		switch_state(runningState)
-	
-	var directionHorizontal = 0
-	if moveRight:
-		directionHorizontal += 1
-	if moveLeft:
-		directionHorizontal -= 1
-#	moveLeftOrRight(directionHorizontal)
 
 func input_jumping(event):
 	var moveRight = event.is_action_pressed("moveRight")
@@ -141,13 +162,6 @@ func input_jumping(event):
 		switch_state(crouchingState)
 	if event.is_action_released("crouchDown"):
 		switch_state(runningState)
-	
-	var directionHorizontal = 0
-	if moveRight:
-		directionHorizontal += 1
-	if moveLeft:
-		directionHorizontal -= 1
-#	moveLeftOrRight(directionHorizontal)
 
 func _on_worldWrapperThing_body_entered(body):
 	if (body.get_name() == "mainChar"):

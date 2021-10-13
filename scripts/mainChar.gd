@@ -17,6 +17,10 @@ var velocity = Vector2()
 var currentRunSpeed = (RUN_SPEED_MIN + RUN_SPEED_MAX) / 2
 var currentJumpSpeed = REGULAR_JUMP_SPEED
 
+var left_key_pressed = false
+var right_key_pressed = false
+var up_key_pressed = false
+var down_key_pressed = false
 #var isJumping
 #var isCrouching
 
@@ -39,7 +43,7 @@ onready var jumpingState = {
 	"process_state": funcref(self, "process_jumping"),
 	"get_state": funcref(self, "state_jumping")
 }
-onready var chargeState = {
+onready var chargingState = {
 	"get_input": funcref(self,"input_charging"),
 	"ready_state": funcref(self, "ready_charging"),
 	"process_state": funcref(self, "process_charging"),
@@ -71,10 +75,25 @@ func speedUpOrSlowDown(directionMultiplier, speedDelta = RUN_ACCEL):
 		currentRunSpeed + (directionMultiplier * speedDelta),
 		RUN_SPEED_MIN, RUN_SPEED_MAX
 	)
-	print(currentRunSpeed)
 
 func _input(event):
+	input_tracker(event)
 	character_function_args("get_input", [event])
+
+func input_tracker(event):
+	if event is InputEventKey:
+		if event.is_action_pressed("moveLeft"):
+			left_key_pressed = true
+		elif event.is_action_pressed("moveRight"):
+			right_key_pressed = true
+		elif event.is_action_pressed("crouchDown"):
+			down_key_pressed = true
+		elif event.is_action_released("moveLeft"):
+			left_key_pressed = false
+		elif event.is_action_released("moveRight"):
+			right_key_pressed = false
+		elif event.is_action_released("crouchDown"):
+			down_key_pressed = false
 
 func _physics_process(delta):
 	character_function("process_state")
@@ -82,7 +101,7 @@ func _physics_process(delta):
 	velocity.x = currentRunSpeed
 	velocity.y += GRAVITY * delta
 	velocity = move_and_slide(velocity, Vector2(0, -1))
-	print(character_function("get_state"))
+	#print(character_function("get_state"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -140,12 +159,13 @@ func input_crouching(event):
 func input_running(event):
 	input_jumping_check(event)
 	input_crouching_check(event)
+	input_charging_check(event)
 
 func input_jumping(event):
 	input_crouching_check(event)
 
 func input_charging(event):
-	pass
+	input_charging_release_check(event)
 
 func input_left_right_acceleration_check():
 	var moveRight = Input.is_action_pressed("moveRight")
@@ -171,6 +191,15 @@ func input_jumping_check(event):
 		self.position.y -= 2
 		velocity.y = currentJumpSpeed
 		switch_state(jumpingState)
+
+func input_charging_check(event):
+	if left_key_pressed && right_key_pressed && event is InputEventKey:
+		if event.is_echo():
+			switch_state(chargingState)
+
+func input_charging_release_check(event):
+	if !left_key_pressed || !right_key_pressed:
+		switch_state(runningState)
 
 func _on_worldWrapperThing_body_entered(body):
 	if (body.get_name() == "mainChar"):

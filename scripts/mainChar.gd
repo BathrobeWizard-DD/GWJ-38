@@ -11,6 +11,7 @@ const RUN_SPEED_MIN = 230
 const RUN_SPEED_MAX = 370
 const REGULAR_JUMP_SPEED = -300
 const FROM_CROUCH_JUMP_SPEED = -400
+const MAX_SPRINT_SPEED = 420
 
 var velocity = Vector2()
 var currentRunSpeed = (RUN_SPEED_MIN + RUN_SPEED_MAX) / 2
@@ -38,6 +39,12 @@ onready var jumpingState = {
 	"process_state": funcref(self, "process_jumping"),
 	"get_state": funcref(self, "state_jumping")
 }
+onready var chargeState = {
+	"get_input": funcref(self,"input_charging"),
+	"ready_state": funcref(self, "ready_charging"),
+	"process_state": funcref(self, "process_charging"),
+	"get_state": funcref(self, "state_charging")
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,7 +59,7 @@ func switch_state(state):
 #takes generic name of function as string.Call this every time you would call a funtion written here
 func character_function(function):
 	if characterState.has(function):
-		characterState[function].call_func()
+		return characterState[function].call_func()
 
 #same as before but with argument array
 func character_function_args(function, argumentArray):
@@ -75,6 +82,7 @@ func _physics_process(delta):
 	velocity.x = currentRunSpeed
 	velocity.y += GRAVITY * delta
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+	print(character_function("get_state"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -91,12 +99,15 @@ func ready_crouching():
 	$AnimatedSprite.set_animation("crouch")
 
 func ready_jumping():
-	self.position.y -= 2
-	velocity.y = currentJumpSpeed
+	pass
+
+func ready_charging():
+	pass
 
 func process_running():
 	input_left_right_acceleration_check()
-	pass
+	if not is_on_floor():
+		switch_state(jumpingState)
 
 func process_crouching():
 	pass
@@ -106,15 +117,21 @@ func process_jumping():
 	if is_on_floor():
 		return switch_state(runningState)
 
+func process_charging():
+	pass
+
 func state_running():
-	return "running"
+	return str("running")
 
 func state_crouching():
-	return "crouching"
+	return str("crouching")
 
 func state_jumping():
-	return "jumping"
-	
+	return str("jumping")
+
+func state_charging():
+	return str("charging")
+
 func input_crouching(event):
 	input_jumping_check(event)
 	if event.is_action_released("crouchDown"):
@@ -126,6 +143,9 @@ func input_running(event):
 
 func input_jumping(event):
 	input_crouching_check(event)
+
+func input_charging(event):
+	pass
 
 func input_left_right_acceleration_check():
 	var moveRight = Input.is_action_pressed("moveRight")
@@ -148,6 +168,8 @@ func input_crouching_check(event):
 func input_jumping_check(event):
 	if event.is_action_pressed("jumpUp") && is_on_floor():
 		currentJumpSpeed = REGULAR_JUMP_SPEED
+		self.position.y -= 2
+		velocity.y = currentJumpSpeed
 		switch_state(jumpingState)
 
 func _on_worldWrapperThing_body_entered(body):

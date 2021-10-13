@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/backToStart.gd" type="Script" id=1]
+[ext_resource path="res://scenes/menus/controlBindingsMenu.tscn" type="PackedScene" id=2]
+
+[node name="optionsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backButton" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.658
+margin_right = -578.0
+margin_bottom = -319.342
+rect_pivot_offset = Vector2( -443.372, -56.3623 )
+text = "Back"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="controlBindingsMenu" parent="." instance=ExtResource( 2 )]
+margin_left = 12.0
+margin_top = 65.0
+margin_right = -268.0
+margin_bottom = -112.0
+
+[connection signal="pressed" from="backButton" to="backButton" method="_on_backButton_pressed"]

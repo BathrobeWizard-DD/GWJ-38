@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/rebindableAction.tscn" type="PackedScene" id=1]
+
+[node name="controlBindingsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -200.0
+margin_bottom = -200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 37.0
+margin_top = 27.0
+margin_right = -35.0
+margin_bottom = -24.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 20
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slowDown" type="VBoxContainer" parent="GridContainer"]
+margin_right = 69.0
+margin_bottom = 44.0
+custom_constants/separation = 10
+
+[node name="slowDown" type="Label" parent="GridContainer/slowDown"]
+margin_right = 69.0
+margin_bottom = 14.0
+text = "Slow Down"
+
+[node name="rebindableAction" parent="GridContainer/slowDown" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 69.0
+margin_bottom = 44.0
+action = "moveLeft"
+
+[node name="speedUp" type="VBoxContainer" parent="GridContainer"]
+margin_left = 89.0
+margin_right = 150.0
+margin_bottom = 44.0
+custom_constants/separation = 10
+
+[node name="speedUp" type="Label" parent="GridContainer/speedUp"]
+margin_right = 61.0
+margin_bottom = 14.0
+text = "Speed Up"
+
+[node name="rebindableAction" parent="GridContainer/speedUp" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 61.0
+margin_bottom = 44.0
+action = "moveRight"
+
+[node name="jumpUp" type="VBoxContainer" parent="GridContainer"]
+margin_left = 170.0
+margin_right = 202.0
+margin_bottom = 44.0
+custom_constants/separation = 10
+
+[node name="Jump" type="Label" parent="GridContainer/jumpUp"]
+margin_right = 32.0
+margin_bottom = 14.0
+text = "Jump"
+
+[node name="rebindableAction" parent="GridContainer/jumpUp" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 32.0
+margin_bottom = 44.0
+action = "jumpUp"
+
+[node name="crouchDown" type="VBoxContainer" parent="GridContainer"]
+margin_left = 222.0
+margin_right = 266.0
+margin_bottom = 44.0
+custom_constants/separation = 10
+
+[node name="crouch" type="Label" parent="GridContainer/crouchDown"]
+margin_right = 44.0
+margin_bottom = 14.0
+text = "Crouch"
+
+[node name="rebindableAction" parent="GridContainer/crouchDown" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 44.0
+margin_bottom = 44.0
+action = "crouchDown"

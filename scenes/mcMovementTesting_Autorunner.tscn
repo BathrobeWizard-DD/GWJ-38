@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/mainChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/TestingLevel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://levels/worldWrapperThing.tscn" type="PackedScene" id=3]
+
+[ext_resource path="res://scenes/obstacles/verticalObstacle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/obstacles/horizontalObstacle.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 300 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,5 +21,15 @@ position = Vector2( 240.583, -24.5739 )
 current = true
 
 [node name="worldWrapperThing" parent="." instance=ExtResource( 3 )]
+
+[node name="verticalObstacle" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1150, 296 )
+initPos = Vector2( 1150, 296 )
+destPos = Vector2( 1150, 236 )
+
+[node name="horizontalObstacle" parent="." instance=ExtResource( 4 )]
+position = Vector2( 595, 290 )
+initPos = Vector2( 595, 290 )
+destPos = Vector2( 705, 290 )
 
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]

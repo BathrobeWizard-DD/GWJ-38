@@ -11,11 +11,12 @@ const RUN_SPEED_MIN = 230
 const RUN_SPEED_MAX = 370
 const REGULAR_JUMP_SPEED = -300
 const FROM_CROUCH_JUMP_SPEED = -400
-const MAX_SPRINT_SPEED = 420
+const MAX_CHARGE_SPEED = 150
 
 var velocity = Vector2()
 var currentRunSpeed = (RUN_SPEED_MIN + RUN_SPEED_MAX) / 2
 var currentJumpSpeed = REGULAR_JUMP_SPEED
+var chargeVelocity = 0
 
 var left_key_pressed = false
 var right_key_pressed = false
@@ -23,8 +24,9 @@ var up_key_pressed = false
 var down_key_pressed = false
 #var isJumping
 #var isCrouching
+var characterState
 
-var characterState 
+onready var charTween = get_node("mainCharTween") 
 onready var runningState = {
 	"get_input": funcref(self,"input_running"),
 	"ready_state": funcref(self, "ready_running"),
@@ -121,7 +123,8 @@ func ready_jumping():
 	pass
 
 func ready_charging():
-	pass
+	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 3.0, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+	charTween.start()
 
 func process_running():
 	input_left_right_acceleration_check()
@@ -137,7 +140,8 @@ func process_jumping():
 		return switch_state(runningState)
 
 func process_charging():
-	pass
+	print(chargeVelocity)
+	#pass
 
 func state_running():
 	return str("running")
@@ -199,7 +203,16 @@ func input_charging_check(event):
 
 func input_charging_release_check(event):
 	if !left_key_pressed || !right_key_pressed:
+		charTween.stop(self, "chargeVelocity")
+		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, currentRunSpeed + chargeVelocity, 1.0,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
+		charTween.start()
 		switch_state(runningState)
+
+func charging_deaccelerate():
+	pass
+
+func charging_boost():
+	pass
 
 func _on_worldWrapperThing_body_entered(body):
 	if (body.get_name() == "mainChar"):

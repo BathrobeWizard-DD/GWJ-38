@@ -140,8 +140,8 @@ func process_jumping():
 		return switch_state(runningState)
 
 func process_charging():
-	print(chargeVelocity)
-	#pass
+	#print(chargeVelocity)
+	pass
 
 func state_running():
 	return str("running")

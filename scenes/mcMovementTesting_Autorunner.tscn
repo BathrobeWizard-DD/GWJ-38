@@ -4,9 +4,7 @@
 [ext_resource path="res://levels/TestingLevel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/obstacles/verticalObstacle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/obstacles/horizontalObstacle.tscn" type="PackedScene" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40, 300 )
+[ext_resource path="res://levels/worldWrapperThing.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,12 +17,6 @@ position = Vector2( 24, 296 )
 position = Vector2( 240.583, -24.5739 )
 current = true
 
-[node name="worldWrapperThing" type="Area2D" parent="."]
-position = Vector2( 1750, 300 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="worldWrapperThing"]
-shape = SubResource( 1 )
-
 [node name="verticalObstacle" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1150, 296 )
 initPos = Vector2( 1150, 296 )
@@ -34,5 +26,7 @@ destPos = Vector2( 1150, 236 )
 position = Vector2( 595, 290 )
 initPos = Vector2( 595, 290 )
 destPos = Vector2( 705, 290 )
+
+[node name="worldWrapperThing" parent="." instance=ExtResource( 5 )]
 
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]

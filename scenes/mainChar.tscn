@@ -36,3 +36,5 @@ shape = SubResource( 2 )
 
 [node name="defaultCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+
+[node name="mainCharTween" type="Tween" parent="."]

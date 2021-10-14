@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/mainChar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/LowObsticalTestingLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/worldWrapperThing.tscn" type="PackedScene" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+
+[node name="mainChar" parent="." instance=ExtResource( 1 )]
+position = Vector2( 28.5088, 280.633 )
+
+[node name="Camera2D" type="Camera2D" parent="mainChar"]
+position = Vector2( 237.133, -16.8179 )
+current = true
+
+[node name="worldWrapperThing" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2627, 123.318 )
+
+[connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]

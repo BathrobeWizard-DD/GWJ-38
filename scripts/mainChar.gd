@@ -123,7 +123,7 @@ func ready_jumping():
 	pass
 
 func ready_charging():
-	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 3.0, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 	charTween.start()
 
 func process_running():

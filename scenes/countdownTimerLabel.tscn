@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/timeLabel.gd" type="Script" id=1]
+[ext_resource path="res://font/orloj-font/Orloj-Ea9eW.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 2 )
+
+[node name="Label" type="Label"]
+margin_right = 125.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+text = "123456"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]

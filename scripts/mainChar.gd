@@ -118,6 +118,8 @@ func ready_running():
 func ready_crouching():
 	$defaultCollisionShape.set_disabled(true)
 	$AnimatedSprite.set_animation("crouch")
+	charTween.interpolate_property(self,"currentJumpSpeed",REGULAR_JUMP_SPEED, FROM_CROUCH_JUMP_SPEED, 0.25, Tween.TRANS_LINEAR,Tween.EASE_OUT_IN)
+	charTween.start()
 
 func ready_jumping():
 	pass
@@ -156,12 +158,12 @@ func state_charging():
 	return str("charging")
 
 func input_crouching(event):
-	input_jumping_check(event)
+	input_jumping_from_crouching_check(event)
 	if event.is_action_released("crouchDown"):
 		switch_state(runningState)
 
 func input_running(event):
-	input_jumping_check(event)
+	input_jumping_from_running_check(event)
 	input_crouching_check(event)
 	input_charging_check(event)
 
@@ -189,7 +191,7 @@ func input_crouching_check(event):
 	if event.is_action_released("crouchDown"):
 		switch_state(runningState)
 
-func input_jumping_check(event):
+func input_jumping_from_running_check(event):
 	if event.is_action_pressed("jumpUp") && is_on_floor():
 		currentJumpSpeed = REGULAR_JUMP_SPEED
 		self.position.y -= 2
@@ -207,6 +209,13 @@ func input_charging_release_check(event):
 		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, currentRunSpeed + chargeVelocity, 1.0,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 		charTween.start()
 		switch_state(runningState)
+
+func input_jumping_from_crouching_check(event):
+	if event.is_action("jumpUp"):
+		charTween.stop(self, "currentJumpSpeed")
+		self.position.y -= 2
+		velocity.y = currentJumpSpeed
+		switch_state(jumpingState)
 
 func charging_deaccelerate():
 	pass

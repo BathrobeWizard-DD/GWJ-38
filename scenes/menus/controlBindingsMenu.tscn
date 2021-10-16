@@ -5,20 +5,22 @@
 [node name="controlBindingsMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -186.0
-margin_bottom = -311.0
+margin_right = -200.0
+margin_bottom = -200.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="."]
-anchor_right = 0.982
-anchor_bottom = 0.898
-margin_right = 161.878
-margin_bottom = 191.998
-custom_constants/vseparation = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 37.0
+margin_top = 27.0
+margin_right = -35.0
+margin_bottom = -24.0
+custom_constants/vseparation = 10
 custom_constants/hseparation = 20
-columns = 5
+columns = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -97,22 +99,3 @@ margin_top = 24.0
 margin_right = 44.0
 margin_bottom = 44.0
 action = "crouchDown"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer"]
-margin_left = 286.0
-margin_right = 324.0
-margin_bottom = 44.0
-custom_constants/separation = 10
-
-[node name="Label" type="Label" parent="GridContainer/VBoxContainer"]
-margin_right = 38.0
-margin_bottom = 14.0
-text = "Pause"
-
-[node name="rebindableAction" parent="GridContainer/VBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 24.0
-margin_right = 38.0
-margin_bottom = 44.0
-action = "pauseGame"

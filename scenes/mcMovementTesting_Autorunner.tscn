@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/mainChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/TestingLevel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/obstacles/verticalObstacle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/obstacles/horizontalObstacle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/worldWrapperThing.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/menus/pauseMenu.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,5 +29,9 @@ initPos = Vector2( 595, 290 )
 destPos = Vector2( 705, 290 )
 
 [node name="worldWrapperThing" parent="." instance=ExtResource( 5 )]
+
+[node name="pauseLayer" type="CanvasLayer" parent="."]
+
+[node name="pauseMenu" parent="pauseLayer" instance=ExtResource( 6 )]
 
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]

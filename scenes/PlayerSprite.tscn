@@ -352,6 +352,7 @@ anims/Land = SubResource( 8 )
 anims/Skate = SubResource( 9 )
 
 [node name="Fire" type="AnimatedSprite" parent="."]
+pause_mode = 2
 position = Vector2( 4, -2 )
 frames = SubResource( 14 )
 frame = 2

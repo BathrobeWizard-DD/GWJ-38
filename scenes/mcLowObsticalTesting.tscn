@@ -9,10 +9,11 @@
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
 
 [node name="mainChar" parent="." instance=ExtResource( 1 )]
-position = Vector2( 28.5088, 280.633 )
+position = Vector2( 68, 296 )
+collision_layer = 3
 
 [node name="Camera2D" type="Camera2D" parent="mainChar"]
-position = Vector2( 237.133, -16.8179 )
+position = Vector2( 86, -45 )
 current = true
 
 [node name="worldWrapperThing" parent="." instance=ExtResource( 3 )]

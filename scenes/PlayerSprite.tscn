@@ -144,6 +144,7 @@ texture = ExtResource( 1 )
 hframes = 8
 vframes = 4
 script = ExtResource( 3 )
+start_apex_velocity = -200
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Skate"

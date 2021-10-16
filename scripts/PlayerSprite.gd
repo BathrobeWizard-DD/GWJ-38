@@ -1,5 +1,8 @@
 class_name PlayerSprite extends Sprite
 
+export(int) var start_apex_velocity = -50.0
+export(int) var end_apex_velocity = 50.0
+
 onready var player = get_node("AnimationPlayer") as AnimationPlayer
 
 var is_jumping := false
@@ -22,14 +25,14 @@ func crouch():
 
 
 func jump(y_vel: float=0.0):
-    if y_vel < 50 and y_vel > -50.0:
+    if y_vel < end_apex_velocity and y_vel > start_apex_velocity:
         print("apex")
         player.play("Apex")
-    elif y_vel <= -50.0 and !is_jumping:
+    elif y_vel <= start_apex_velocity and !is_jumping:
         print("rising")
         is_jumping = true
         player.play("Jump")
-    elif y_vel >= 50 and !is_falling:
+    elif y_vel >= end_apex_velocity and !is_falling:
         is_falling = true
         print("falling")
         player.play("Fall")

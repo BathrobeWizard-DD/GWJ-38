@@ -13,7 +13,7 @@ const REGULAR_JUMP_SPEED = -300
 const FROM_CROUCH_JUMP_SPEED = -400
 const MAX_CHARGE_SPEED = 150
 
-var velocity = Vector2()
+var velocity := Vector2()
 var currentRunSpeed = (RUN_SPEED_MIN + RUN_SPEED_MAX) / 2
 var currentJumpSpeed = REGULAR_JUMP_SPEED
 var chargeVelocity = 0
@@ -26,7 +26,9 @@ var down_key_pressed = false
 #var isCrouching
 var characterState
 
-onready var charTween = get_node("mainCharTween") 
+onready var charTween = get_node("mainCharTween") as Tween
+onready var sprite = get_node("PlayerSprite") as PlayerSprite
+
 onready var runningState = {
 	"get_input": funcref(self,"input_running"),
 	"ready_state": funcref(self, "ready_running"),
@@ -113,22 +115,23 @@ func _physics_process(delta):
 
 func ready_running():
 	$defaultCollisionShape.set_disabled(false)
-	$AnimatedSprite.set_animation("default")
 
 func ready_crouching():
 	$defaultCollisionShape.set_disabled(true)
-	$AnimatedSprite.set_animation("crouch")
+	sprite.crouch()
 	charTween.interpolate_property(self,"currentJumpSpeed",REGULAR_JUMP_SPEED, FROM_CROUCH_JUMP_SPEED, 0.25, Tween.TRANS_LINEAR,Tween.EASE_OUT_IN)
 	charTween.start()
 
 func ready_jumping():
-	pass
+	sprite.jump()
 
 func ready_charging():
+	sprite.charge()
 	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 	charTween.start()
 
 func process_running():
+	sprite.skate(velocity.x, RUN_SPEED_MAX, RUN_SPEED_MIN)
 	input_left_right_acceleration_check()
 	if not is_on_floor():
 		switch_state(jumpingState)
@@ -137,8 +140,11 @@ func process_crouching():
 	pass
 
 func process_jumping():
+	sprite.jump(velocity.y)
+
 	input_left_right_acceleration_check()
 	if is_on_floor():
+		sprite.land()
 		return switch_state(runningState)
 
 func process_charging():

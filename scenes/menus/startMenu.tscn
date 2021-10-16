@@ -34,9 +34,9 @@ Title Goes Here"
 [node name="btnStartGame" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 262.0
-margin_top = 208.0
-margin_right = -271.0
+margin_left = 108.0
+margin_top = 42.0
+margin_right = -120.0
 margin_bottom = -118.0
 text = "START GAME"
 __meta__ = {
@@ -46,10 +46,10 @@ __meta__ = {
 [node name="btnOptions" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 213.479
-margin_top = 268.158
-margin_right = -363.521
-margin_bottom = -57.8422
+margin_left = 58.0
+margin_top = 118.0
+margin_right = -199.0
+margin_bottom = -42.0
 text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -58,10 +58,10 @@ __meta__ = {
 [node name="btnCredits" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 358.132
-margin_top = 267.317
-margin_right = -224.868
-margin_bottom = -58.6831
+margin_left = 193.0
+margin_top = 119.0
+margin_right = -70.0
+margin_bottom = -41.0
 text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false

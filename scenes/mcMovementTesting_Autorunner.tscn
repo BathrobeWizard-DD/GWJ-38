@@ -14,7 +14,7 @@
 position = Vector2( 24, 296 )
 
 [node name="Camera2D" type="Camera2D" parent="mainChar"]
-position = Vector2( 240.583, -24.5739 )
+position = Vector2( 132.96, -43.6012 )
 current = true
 
 [node name="verticalObstacle" parent="." instance=ExtResource( 3 )]

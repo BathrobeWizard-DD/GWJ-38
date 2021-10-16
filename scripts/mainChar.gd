@@ -211,7 +211,7 @@ func input_charging_release_check(event):
 		switch_state(runningState)
 
 func input_jumping_from_crouching_check(event):
-	if event.is_action("jumpUp"):
+	if event.is_action("jumpUp") && is_on_floor():
 		charTween.stop(self, "currentJumpSpeed")
 		self.position.y -= 2
 		velocity.y = currentJumpSpeed

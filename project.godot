@@ -21,8 +21,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Gwj- 38"
-run/main_scene="res://scenes/mcMovementTesting_Autorunner.tscn"
+run/main_scene="res://scenes/menus/startMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+ThemeMusic="res://ThemeMusic.tscn"
+ButtonPress="*res://ButtonPress.tscn"
 
 [display]
 

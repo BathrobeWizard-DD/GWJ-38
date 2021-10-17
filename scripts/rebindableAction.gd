@@ -51,4 +51,5 @@ func _update_button_text(input_event: InputEvent) -> void:
 #	pass
 
 func _on_rebindableAction_pressed() -> void:
+	ButtonPress.play()
 	_editing = true

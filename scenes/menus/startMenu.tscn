@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/startMenu.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ButtonPress.wav" type="AudioStream" id=3]
 
 [node name="startMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -366.574
+margin_top = -131.373
+margin_right = -366.574
+margin_bottom = -131.373
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -17,6 +23,7 @@ margin_left = 194.084
 margin_top = 27.4864
 margin_right = -211.916
 margin_bottom = -242.514
+rect_min_size = Vector2( 0, 50 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -30,6 +37,9 @@ margin_right = -47.1299
 margin_bottom = 10.0547
 text = "GWJ 38
 Title Goes Here"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="btnStartGame" type="Button" parent="."]
 anchor_right = 1.0
@@ -66,6 +76,11 @@ text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="btnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="pressed" from="btnStartGame" to="." method="_on_btnStartGame_pressed"]
 [connection signal="pressed" from="btnOptions" to="." method="_on_btnOptions_pressed"]

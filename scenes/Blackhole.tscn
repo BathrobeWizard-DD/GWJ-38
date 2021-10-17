@@ -1,24 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Blackhole.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://art/Blackhole.gdshader" type="Shader" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 3 )
-shader_param/center = Vector2( 0.5, 0.5 )
-shader_param/force = 0.3
-shader_param/size = 0.961
-shader_param/thickness = 0.226
-
-[sub_resource type="OpenSimplexNoise" id=6]
-
-[sub_resource type="NoiseTexture" id=7]
-width = 640
-height = 360
-noise = SubResource( 6 )
 
 [node name="BlackHole" type="Node2D"]
 script = ExtResource( 1 )
@@ -26,7 +11,6 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_horizontal_guides_": [ 442640.0 ]
 }
-growthRate = 0.1
 innerCircleColor = Color( 0.65098, 0.239216, 0.168627, 1 )
 outerCircleColor = Color( 0.0627451, 0.054902, 0.0941176, 1 )
 
@@ -36,13 +20,5 @@ outerCircleColor = Color( 0.0627451, 0.054902, 0.0941176, 1 )
 shape = SubResource( 1 )
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Sprite" type="Sprite" parent="CanvasLayer"]
-visible = false
-material = SubResource( 5 )
-texture = SubResource( 7 )
-centered = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

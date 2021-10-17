@@ -15,8 +15,7 @@ func _draw():
 	draw_circle(to_local(global_position), blackholeSize, outerCircleColor)
 
 func _process(delta):
-	blackholeSize += growthRate + delta
-	get_node("CanvasLayer/Sprite").material.set_shader_param("size", 0.5)
+	blackholeSize += growthRate
 	update()
 	get_node("Area2D/CollisionShape2D").shape.radius = min(blackholeSize * 1.1, blackholeSize + 20)
 

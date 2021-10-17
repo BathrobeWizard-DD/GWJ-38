@@ -212,7 +212,7 @@ func input_charging_check(event):
 func input_charging_release_check(event):
 	if !left_key_pressed || !right_key_pressed:
 		charTween.stop(self, "chargeVelocity")
-		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, currentRunSpeed + chargeVelocity, 1.0,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
+		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, currentRunSpeed + chargeVelocity, 0.5,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 		charTween.start()
 		switch_state(runningState)
 

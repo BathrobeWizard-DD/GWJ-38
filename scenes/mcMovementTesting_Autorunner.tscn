@@ -50,7 +50,7 @@ visible = false
 
 [node name="BlackHole" parent="." instance=ExtResource( 8 )]
 position = Vector2( 15.3509, 296.83 )
-growthRate = 2.0
+growthRate = 3.0
 
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]
 [connection signal="mainCharEntered" from="BlackHole" to="mainChar" method="_on_BlackHole_mainCharEntered"]

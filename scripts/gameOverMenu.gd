@@ -27,3 +27,8 @@ func _on_mainMenu_pressed():
 func _on_BlackHole_mainCharEntered():
 	showGameOver()
 	pass # Replace with function body.
+
+
+func _on_Label_timedOut():
+	showGameOver()
+	pass # Replace with function body.

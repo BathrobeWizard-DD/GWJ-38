@@ -11,7 +11,7 @@
 [ext_resource path="res://scenes/obstacles/horizontalObstacle.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/menus/gameOverMenu.tscn" type="PackedScene" id=10]
 
-[node name="LevelOne" instance=ExtResource( 1 )]
+[node name="LevelOne2" instance=ExtResource( 1 )]
 
 [node name="mainChar" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( -227.919, 296.574 )
@@ -151,5 +151,7 @@ destPos = Vector2( 7325, 260 )
 speedFactor = 2
 
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]
+[connection signal="timedOut" from="CanvasLayer/Label" to="mainChar" method="_on_Label_timedOut"]
+[connection signal="timedOut" from="CanvasLayer/Label" to="CanvasLayer/gameOverMenu" method="_on_Label_timedOut"]
 [connection signal="mainCharEntered" from="BlackHole" to="mainChar" method="_on_BlackHole_mainCharEntered"]
 [connection signal="mainCharEntered" from="BlackHole" to="CanvasLayer/gameOverMenu" method="_on_BlackHole_mainCharEntered"]

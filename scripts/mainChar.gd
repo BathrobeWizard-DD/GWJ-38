@@ -264,4 +264,8 @@ func _on_worldWrapperThing_body_entered(body):
 
 func _on_BlackHole_mainCharEntered():
 	switch_state(gameOverState)
-	pass # Replace with function body.
+	
+
+
+func _on_Label_timedOut():
+	switch_state(gameOverState)

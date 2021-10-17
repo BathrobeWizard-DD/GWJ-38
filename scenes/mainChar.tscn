@@ -31,6 +31,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="speedBoostGauge" type="TextureProgress" parent="."]
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+max_value = 150.0
+texture_progress = ExtResource( 3 )
+fill_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="mainCharTween" type="Tween" parent="."]
 
 [node name="PlayerSprite" parent="." instance=ExtResource( 1 )]

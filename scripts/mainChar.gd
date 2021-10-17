@@ -125,6 +125,7 @@ func _physics_process(delta):
 
 func ready_running():
 	$jumpChargeGauge.set_value(0)
+	$speedBoostGauge.set_value(0)
 	$defaultCollisionShape.set_disabled(false)
 
 func ready_crouching():
@@ -135,6 +136,7 @@ func ready_crouching():
 
 func ready_jumping():
 	$jumpChargeGauge.set_value(0)
+	$speedBoostGauge.set_value(0)
 	sprite.jump()
 
 func ready_gameOver():
@@ -164,7 +166,7 @@ func process_jumping():
 		return switch_state(runningState)
 
 func process_charging():
-	#print(chargeVelocity)
+	$speedBoostGauge.set_value(chargeVelocity)
 	pass
 
 func process_gameOver():

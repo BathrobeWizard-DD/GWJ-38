@@ -9,6 +9,6 @@
 position = Vector2( -227.919, 296.574 )
 
 [node name="Camera2D" type="Camera2D" parent="mainChar" index="4"]
-position = Vector2( 187.176, -52.9358 )
+position = Vector2( 207.335, -27.7374 )
 current = true
 drag_margin_v_enabled = true

@@ -6,11 +6,11 @@ extends KinematicBody2D
 # var b = "text"
 const GRAVITY = 600.0
 const RUN_ACCEL = 15
-const INAIR_ACCEL = 2.5
+const INAIR_ACCEL = 7.5
 const RUN_SPEED_MIN = 130
 const RUN_SPEED_MAX = 270
 const REGULAR_JUMP_SPEED = -300
-const FROM_CROUCH_JUMP_SPEED = -475
+const FROM_CROUCH_JUMP_SPEED = -400
 const MAX_CHARGE_SPEED = 75
 
 var velocity := Vector2()

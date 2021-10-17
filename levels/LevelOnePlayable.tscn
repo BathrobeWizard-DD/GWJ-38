@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/LevelOneMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/mainChar.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/countdownTimerLabel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/obstacles/verticalObstacle.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/obstacles/horizontalObstacle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/menus/gameOverMenu.tscn" type="PackedScene" id=10]
 
 [node name="LevelOne" instance=ExtResource( 1 )]
 
@@ -35,7 +36,9 @@ margin_top = 73.1603
 margin_right = 178.406
 margin_bottom = 111.16
 
-[node name="Label" parent="CanvasLayer" index="2" instance=ExtResource( 7 )]
+[node name="gameOverMenu" parent="CanvasLayer" index="2" instance=ExtResource( 10 )]
+
+[node name="Label" parent="CanvasLayer" index="3" instance=ExtResource( 7 )]
 margin_left = 251.73
 margin_top = 29.6985
 margin_right = 419.73
@@ -43,7 +46,7 @@ margin_bottom = 69.6985
 starting_time = 35
 
 [node name="BlackHole" parent="." index="3" instance=ExtResource( 6 )]
-position = Vector2( -176.777, 305.47 )
+position = Vector2( -317.085, 296.49 )
 growthRate = 4.0
 
 [node name="verticalObstacle" parent="." index="4" instance=ExtResource( 8 )]
@@ -148,3 +151,5 @@ destPos = Vector2( 7325, 260 )
 speedFactor = 2
 
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]
+[connection signal="mainCharEntered" from="BlackHole" to="mainChar" method="_on_BlackHole_mainCharEntered"]
+[connection signal="mainCharEntered" from="BlackHole" to="CanvasLayer/gameOverMenu" method="_on_BlackHole_mainCharEntered"]

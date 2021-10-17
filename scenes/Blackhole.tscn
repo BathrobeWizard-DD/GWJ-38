@@ -20,7 +20,7 @@ outerCircleColor = Color( 0.0627451, 0.054902, 0.0941176, 1 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 10.0
 autostart = true
 
 [node name="Background" parent="." instance=ExtResource( 2 )]

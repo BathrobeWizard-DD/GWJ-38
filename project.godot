@@ -21,15 +21,15 @@ _global_script_class_icons={
 [application]
 
 config/name="Gwj- 38"
-run/main_scene="res://scenes/menus/startMenu.tscn"
+run/main_scene="res://scenes/mcMovementTesting_Autorunner.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=640
 window/size/height=360
-window/size/test_width=1280
-window/size/test_height=720
+window/size/test_width=640
+window/size/test_height=360
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -86,6 +86,5 @@ pauseGame={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.0627451, 0.054902, 0.0941176, 1 )
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false

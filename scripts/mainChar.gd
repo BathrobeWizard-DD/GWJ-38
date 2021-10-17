@@ -17,6 +17,7 @@ var velocity := Vector2()
 var currentRunSpeed = (RUN_SPEED_MIN + RUN_SPEED_MAX) / 2
 var currentJumpSpeed = REGULAR_JUMP_SPEED
 var chargeVelocity = 0
+var currentGravity = 0
 
 var left_key_pressed = false
 var right_key_pressed = false
@@ -53,9 +54,16 @@ onready var chargingState = {
 	"process_state": funcref(self, "process_charging"),
 	"get_state": funcref(self, "state_charging")
 }
+onready var gameOverState = {
+	"get_input": funcref(self,"input_gameOver"),
+	"ready_state": funcref(self, "ready_gameOver"),
+	"process_state": funcref(self, "process_gameOver"),
+	"get_state": funcref(self, "state_gameOver")
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	currentGravity = GRAVITY
 	switch_state(runningState)
 
 #*********Finite State Machine functions*****************
@@ -102,9 +110,11 @@ func input_tracker(event):
 func _physics_process(delta):
 	character_function("process_state")
 	
-	velocity.x = currentRunSpeed
-	velocity.y += GRAVITY * delta
-	velocity = move_and_slide(velocity, Vector2(0, -1))
+	var finalVector = Vector2.ZERO
+	if (character_function('get_state') != 'gameOver'):
+		finalVector.x = currentRunSpeed
+		finalVector.y = velocity.y + (currentGravity * delta)
+	velocity = move_and_slide(finalVector, Vector2(0, -1))
 	#print(character_function("get_state"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -114,6 +124,8 @@ func _physics_process(delta):
 #*********STATE FUNCTIONS***************************
 
 func ready_running():
+	$jumpChargeGauge.set_value(0)
+	$speedBoostGauge.set_value(0)
 	$defaultCollisionShape.set_disabled(false)
 
 func ready_crouching():
@@ -123,7 +135,12 @@ func ready_crouching():
 	charTween.start()
 
 func ready_jumping():
+	$jumpChargeGauge.set_value(0)
+	$speedBoostGauge.set_value(0)
 	sprite.jump()
+
+func ready_gameOver():
+	pass
 
 func ready_charging():
 	sprite.charge()
@@ -137,6 +154,7 @@ func process_running():
 		switch_state(jumpingState)
 
 func process_crouching():
+	$jumpChargeGauge.set_value(-(currentJumpSpeed - REGULAR_JUMP_SPEED))
 	pass
 
 func process_jumping():
@@ -148,7 +166,10 @@ func process_jumping():
 		return switch_state(runningState)
 
 func process_charging():
-	#print(chargeVelocity)
+	$speedBoostGauge.set_value(chargeVelocity)
+	pass
+
+func process_gameOver():
 	pass
 
 func state_running():
@@ -162,6 +183,9 @@ func state_jumping():
 
 func state_charging():
 	return str("charging")
+
+func state_gameOver():
+	return str("gameOver")
 
 func input_crouching(event):
 	input_jumping_from_crouching_check(event)
@@ -178,6 +202,9 @@ func input_jumping(event):
 
 func input_charging(event):
 	input_charging_release_check(event)
+
+func input_gameOver(event):
+	pass
 
 func input_left_right_acceleration_check():
 	var moveRight = Input.is_action_pressed("moveRight")
@@ -234,3 +261,8 @@ func _on_worldWrapperThing_body_entered(body):
 		body.position.x = 24
 	if (body.position.y >= 360):
 		body.position.y = 290
+
+
+func _on_BlackHole_mainCharEntered():
+	switch_state(gameOverState)
+	pass # Replace with function body.

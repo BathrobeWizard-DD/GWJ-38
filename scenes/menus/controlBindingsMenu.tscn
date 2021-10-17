@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/rebindableAction.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/btnQuickBind.gd" type="Script" id=2]
 
 [node name="controlBindingsMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -186.0
-margin_bottom = -311.0
+margin_bottom = -244.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -116,3 +117,29 @@ margin_top = 24.0
 margin_right = 38.0
 margin_bottom = 44.0
 action = "pauseGame"
+
+[node name="WASD_quickBind" type="Button" parent="."]
+margin_left = 41.38
+margin_top = 72.7486
+margin_right = 112.38
+margin_bottom = 95.7486
+text = "WASD"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArrowKeys_quickBind" type="Button" parent="."]
+margin_left = 188.212
+margin_top = 72.7486
+margin_right = 271.212
+margin_bottom = 95.7486
+text = "Arrow Keys"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+quickRebindType = 1
+
+[connection signal="pressed" from="WASD_quickBind" to="WASD_quickBind" method="_on_quickBind_pressed"]
+[connection signal="pressed" from="ArrowKeys_quickBind" to="ArrowKeys_quickBind" method="_on_quickBind_pressed"]

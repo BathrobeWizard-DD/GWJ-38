@@ -1,6 +1,7 @@
 extends Node2D
 
 export var blackholeSize = 10
+
 export(float) var growthRate = 1.0
 export(Color) var innerCircleColor = Color( 1, 1, 1, 1)
 export(Color) var outerCircleColor = Color( 0, 0, 0, 1)

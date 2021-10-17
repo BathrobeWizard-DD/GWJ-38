@@ -5,13 +5,13 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 const GRAVITY = 600.0
-const RUN_ACCEL = 10
-const INAIR_ACCEL = 2.5
-const RUN_SPEED_MIN = 230
-const RUN_SPEED_MAX = 370
+const RUN_ACCEL = 15
+const INAIR_ACCEL = 7.5
+const RUN_SPEED_MIN = 130
+const RUN_SPEED_MAX = 270
 const REGULAR_JUMP_SPEED = -300
 const FROM_CROUCH_JUMP_SPEED = -400
-const MAX_CHARGE_SPEED = 150
+const MAX_CHARGE_SPEED = 75
 
 var velocity := Vector2()
 var currentRunSpeed = (RUN_SPEED_MIN + RUN_SPEED_MAX) / 2
@@ -131,7 +131,7 @@ func ready_running():
 func ready_crouching():
 	$defaultCollisionShape.set_disabled(true)
 	sprite.crouch()
-	charTween.interpolate_property(self,"currentJumpSpeed",REGULAR_JUMP_SPEED, FROM_CROUCH_JUMP_SPEED, 0.25, Tween.TRANS_LINEAR,Tween.EASE_OUT_IN)
+	charTween.interpolate_property(self,"currentJumpSpeed",REGULAR_JUMP_SPEED, FROM_CROUCH_JUMP_SPEED, 0.5, Tween.TRANS_LINEAR,Tween.EASE_OUT_IN)
 	charTween.start()
 
 func ready_jumping():
@@ -144,7 +144,7 @@ func ready_gameOver():
 
 func ready_charging():
 	sprite.charge()
-	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 	charTween.start()
 
 func process_running():
@@ -155,7 +155,6 @@ func process_running():
 
 func process_crouching():
 	$jumpChargeGauge.set_value(-(currentJumpSpeed - REGULAR_JUMP_SPEED))
-	pass
 
 func process_jumping():
 	sprite.jump(velocity.y)
@@ -239,7 +238,7 @@ func input_charging_check(event):
 func input_charging_release_check(event):
 	if !left_key_pressed || !right_key_pressed:
 		charTween.stop(self, "chargeVelocity")
-		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, currentRunSpeed + chargeVelocity, 1.0,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
+		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, currentRunSpeed + chargeVelocity, 0.2,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 		charTween.start()
 		switch_state(runningState)
 
@@ -265,4 +264,8 @@ func _on_worldWrapperThing_body_entered(body):
 
 func _on_BlackHole_mainCharEntered():
 	switch_state(gameOverState)
-	pass # Replace with function body.
+	
+
+
+func _on_Label_timedOut():
+	switch_state(gameOverState)

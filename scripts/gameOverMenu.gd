@@ -11,11 +11,8 @@ func _ready():
 	visible = false
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func showGameOver():
+	get_parent().get_node("Label/Timer")
 	visible = true
 
 func _on_playAgain_pressed():
@@ -28,5 +25,10 @@ func _on_mainMenu_pressed():
 
 
 func _on_BlackHole_mainCharEntered():
+	showGameOver()
+	pass # Replace with function body.
+
+
+func _on_Label_timedOut():
 	showGameOver()
 	pass # Replace with function body.

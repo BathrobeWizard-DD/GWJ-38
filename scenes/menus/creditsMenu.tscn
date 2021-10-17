@@ -19,64 +19,64 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_right = 600.0
+margin_right = 695.0
 margin_bottom = 102.0
 custom_constants/separation = 8
 
 [node name="Team" type="Label" parent="VBoxContainer/VBoxContainer"]
-margin_right = 600.0
+margin_right = 695.0
 margin_bottom = 14.0
 text = "Team:"
 
 [node name="BathrobeWizard" type="Label" parent="VBoxContainer/VBoxContainer"]
 margin_top = 22.0
-margin_right = 600.0
+margin_right = 695.0
 margin_bottom = 36.0
 text = "BathrobeWizard: Programming & Design"
 
 [node name="Helix" type="Label" parent="VBoxContainer/VBoxContainer"]
 margin_top = 44.0
-margin_right = 600.0
+margin_right = 695.0
 margin_bottom = 58.0
 text = "Helix: Programming & Design"
 
 [node name="Steven" type="Label" parent="VBoxContainer/VBoxContainer"]
 margin_top = 66.0
-margin_right = 600.0
+margin_right = 695.0
 margin_bottom = 80.0
-text = "Steven: Art"
+text = "Steven: Art & Design"
 
 [node name="RobotsRFun" type="Label" parent="VBoxContainer/VBoxContainer"]
 margin_top = 88.0
-margin_right = 600.0
+margin_right = 695.0
 margin_bottom = 102.0
-text = "robotsrfun: Sounds & Music"
+text = "Aokay: Theme and SFX"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 122.0
-margin_right = 600.0
+margin_right = 695.0
 margin_bottom = 158.0
 custom_constants/separation = 8
 
 [node name="Assets" type="Label" parent="VBoxContainer/VBoxContainer2"]
-margin_right = 600.0
+margin_right = 695.0
 margin_bottom = 14.0
 text = "Assets:"
 
 [node name="Assets2" type="Label" parent="VBoxContainer/VBoxContainer2"]
 margin_top = 22.0
-margin_right = 600.0
+margin_right = 695.0
 margin_bottom = 36.0
 text = "[Description here]"
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 margin_top = 178.0
-margin_right = 600.0
+margin_right = 695.0
 margin_bottom = 192.0
 
 [node name="Label" type="Label" parent="VBoxContainer/CenterContainer"]
-margin_left = 241.0
-margin_right = 359.0
+margin_left = 288.0
+margin_right = 406.0
 margin_bottom = 14.0
 text = "Thanks for playing!"
 

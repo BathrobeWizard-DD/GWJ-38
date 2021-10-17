@@ -47,7 +47,7 @@ starting_time = 35
 
 [node name="BlackHole" parent="." index="3" instance=ExtResource( 6 )]
 position = Vector2( -317.085, 296.49 )
-growthRate = 4.0
+growthRate = 1.5
 
 [node name="verticalObstacle" parent="." index="4" instance=ExtResource( 8 )]
 position = Vector2( 1533.99, 285.364 )

@@ -12,7 +12,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_horizontal_guides_": [ 442640.0 ]
 }
-innerCircleColor = Color( 0.65098, 0.239216, 0.168627, 1 )
+innerCircleColor = Color( 0.823529, 0.482353, 0.196078, 1 )
 outerCircleColor = Color( 0.0627451, 0.054902, 0.0941176, 1 )
 
 [node name="Area2D" type="Area2D" parent="."]

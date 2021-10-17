@@ -16,10 +16,12 @@ func showGameOver():
 	visible = true
 
 func _on_playAgain_pressed():
-	get_tree().change_scene("res://scenes/mcMovementTesting_Autorunner.tscn")
+	ButtonPress.play()
+	get_tree().change_scene("res://levels/LevelOnePlayable.tscn")
 
 
 func _on_mainMenu_pressed():
+	ButtonPress.play()
 	get_tree().change_scene("res://scenes/menus/startMenu.tscn")
 	pass # Replace with function body.
 

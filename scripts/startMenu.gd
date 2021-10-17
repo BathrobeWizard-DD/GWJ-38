@@ -13,12 +13,15 @@ func _ready():
 #	pass
 
 func _on_btnStartGame_pressed():
-	get_tree().change_scene("res://scenes/mcMovementTesting_Autorunner.tscn")
+	ButtonPress.play()
+	get_tree().change_scene("res://levels/LevelOnePlayable.tscn")
 
 
 func _on_btnCredits_pressed():
+	ButtonPress.play()
 	get_tree().change_scene("res://scenes/menus/creditsMenu.tscn")
 
 
 func _on_btnOptions_pressed():
+	ButtonPress.play()
 	get_tree().change_scene("res://scenes/menus/optionsMenu.tscn")

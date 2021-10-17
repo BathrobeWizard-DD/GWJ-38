@@ -8,7 +8,7 @@ export(Color) var outerCircleColor = Color( 0, 0, 0, 1)
 signal mainCharEntered()
 
 func _ready():
-	get_node("Sprite").material.set_shader_param("center", Vector2())
+	pass
 
 func _draw():
 	draw_circle(to_local(global_position), min(blackholeSize * 1.1, blackholeSize + 20), innerCircleColor)
@@ -16,7 +16,7 @@ func _draw():
 
 func _process(delta):
 	blackholeSize += growthRate + delta
-	get_node("Sprite").material.set_shader_param("size", blackholeSize / 360)
+	get_node("CanvasLayer/Sprite").material.set_shader_param("size", 0.5)
 	update()
 	get_node("Area2D/CollisionShape2D").shape.radius = min(blackholeSize * 1.1, blackholeSize + 20)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Blackhole.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=2]
@@ -6,30 +6,19 @@
 
 [sub_resource type="CircleShape2D" id=1]
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 3 )
-shader_param/center = Vector2( 0.359, 0.529 )
+shader_param/center = Vector2( 0.5, 0.5 )
 shader_param/force = 0.3
 shader_param/size = 0.961
-shader_param/thickness = 0.096
+shader_param/thickness = 0.226
 
-[sub_resource type="OpenSimplexNoise" id=4]
+[sub_resource type="OpenSimplexNoise" id=6]
 
-[sub_resource type="NoiseTexture" id=5]
-noise = SubResource( 4 )
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 3 )
-shader_param/center = null
-shader_param/force = null
-shader_param/size = null
-shader_param/thickness = null
-
-[sub_resource type="OpenSimplexNoise" id=7]
-
-[sub_resource type="NoiseTexture" id=8]
-seamless = true
-noise = SubResource( 7 )
+[sub_resource type="NoiseTexture" id=7]
+width = 640
+height = 360
+noise = SubResource( 6 )
 
 [node name="BlackHole" type="Node2D"]
 script = ExtResource( 1 )
@@ -48,23 +37,12 @@ shape = SubResource( 1 )
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
 
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-material = SubResource( 3 )
-position = Vector2( 0, 68 )
-texture = SubResource( 5 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource( 6 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -336.0
-margin_top = -250.0
-margin_right = 512.0
-margin_bottom = 512.0
-texture = SubResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+visible = false
+material = SubResource( 5 )
+texture = SubResource( 7 )
+centered = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -13,4 +13,5 @@ void fragment()
 		smoothstep(size-thickness-0.1, size-thickness, length(scaled_uv - center));
 	vec2 disp = normalize(scaled_uv - center) * force * mask;
 	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV - disp);
+//	COLOR.rgb = vec3(1, 1, 1);
 }

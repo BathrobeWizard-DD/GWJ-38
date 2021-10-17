@@ -5,13 +5,13 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 const GRAVITY = 600.0
-const RUN_ACCEL = 10
+const RUN_ACCEL = 15
 const INAIR_ACCEL = 2.5
-const RUN_SPEED_MIN = 230
-const RUN_SPEED_MAX = 370
+const RUN_SPEED_MIN = 130
+const RUN_SPEED_MAX = 270
 const REGULAR_JUMP_SPEED = -300
-const FROM_CROUCH_JUMP_SPEED = -400
-const MAX_CHARGE_SPEED = 150
+const FROM_CROUCH_JUMP_SPEED = -475
+const MAX_CHARGE_SPEED = 75
 
 var velocity := Vector2()
 var currentRunSpeed = (RUN_SPEED_MIN + RUN_SPEED_MAX) / 2
@@ -119,7 +119,7 @@ func ready_running():
 func ready_crouching():
 	$defaultCollisionShape.set_disabled(true)
 	sprite.crouch()
-	charTween.interpolate_property(self,"currentJumpSpeed",REGULAR_JUMP_SPEED, FROM_CROUCH_JUMP_SPEED, 0.25, Tween.TRANS_LINEAR,Tween.EASE_OUT_IN)
+	charTween.interpolate_property(self,"currentJumpSpeed",REGULAR_JUMP_SPEED, FROM_CROUCH_JUMP_SPEED, 0.5, Tween.TRANS_LINEAR,Tween.EASE_OUT_IN)
 	charTween.start()
 
 func ready_jumping():

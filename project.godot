@@ -26,10 +26,10 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=640
-window/size/height=360
-window/size/test_width=640
-window/size/test_height=360
+window/size/width=735
+window/size/height=270
+window/size/test_width=980
+window/size/test_height=510
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

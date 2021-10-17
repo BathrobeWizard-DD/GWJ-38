@@ -27,10 +27,10 @@ __meta__ = {
 [node name="gameOverLabel" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 281.332
-margin_top = 88.9858
-margin_right = -285.668
-margin_bottom = -256.014
+margin_left = 328.475
+margin_top = 92.3532
+margin_right = -238.525
+margin_bottom = -163.647
 text = "Game Over"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -39,10 +39,10 @@ __meta__ = {
 [node name="playAgain" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 92.0
-margin_top = 161.791
-margin_right = -91.0
-margin_bottom = -167.209
+margin_left = 90.0
+margin_top = 132.607
+margin_right = -93.0
+margin_bottom = -117.393
 text = "Play Again"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,10 +51,10 @@ __meta__ = {
 [node name="mainMenu" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 92.0
-margin_top = 216.997
-margin_right = -91.0
-margin_bottom = -107.003
+margin_left = 90.0
+margin_top = 165.0
+margin_right = -93.0
+margin_bottom = -85.0
 text = "Quit to Main Menu"
 __meta__ = {
 "_edit_use_anchors_": false

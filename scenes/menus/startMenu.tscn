@@ -13,10 +13,10 @@ __meta__ = {
 [node name="titlePanel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 191.252
-margin_top = 60.522
-margin_right = -214.748
-margin_bottom = -236.478
+margin_left = 194.084
+margin_top = 27.4864
+margin_right = -211.916
+margin_bottom = -242.514
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,20 +24,20 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="titlePanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 46.4313
-margin_top = 12.8863
-margin_right = -56.5687
-margin_bottom = -10.1138
+margin_left = 55.8701
+margin_top = 10.0547
+margin_right = -47.1299
+margin_bottom = 10.0547
 text = "GWJ 38
 Title Goes Here"
 
 [node name="btnStartGame" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 250.0
-margin_top = 143.0
-margin_right = -285.0
-margin_bottom = -169.0
+margin_left = 259.439
+margin_top = 104.301
+margin_right = -275.561
+margin_bottom = -145.699
 text = "START GAME"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,10 +46,10 @@ __meta__ = {
 [node name="btnOptions" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 107.0
-margin_top = 259.0
-margin_right = -447.0
-margin_bottom = -66.0
+margin_left = 116.439
+margin_top = 220.301
+margin_right = -437.561
+margin_bottom = -29.6989
 text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -58,10 +58,10 @@ __meta__ = {
 [node name="btnCredits" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 406.0
-margin_top = 264.0
-margin_right = -143.0
-margin_bottom = -65.0
+margin_left = 415.439
+margin_top = 225.301
+margin_right = -133.561
+margin_bottom = -24.6989
 text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false

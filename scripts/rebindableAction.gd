@@ -15,16 +15,18 @@ func _ready():
 	if actionList.size() > 0:
 		_update_button_text(actionList[0])
 
+func updateAction(inputAction, input_event):
+	InputMap.action_erase_events(inputAction)
+	InputMap.action_add_event(inputAction, input_event)
+	_update_button_text(input_event)
+
 func _input(input_event: InputEvent) -> void:
 	if _editing:
 		if (input_event is InputEventMouseMotion):
 			return
 			
 		if (input_event.as_text() != "Escape"):
-			InputMap.action_erase_events(action)
-			InputMap.action_add_event(action, input_event)
-			
-			_update_button_text(input_event)
+			updateAction(action, input_event)
 			_editing = false
 			pressed = false
 			

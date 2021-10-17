@@ -30,6 +30,7 @@ window/size/width=735
 window/size/height=270
 window/size/test_width=980
 window/size/test_height=510
+
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -86,5 +87,6 @@ pauseGame={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.0627451, 0.054902, 0.0941176, 1 )
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false

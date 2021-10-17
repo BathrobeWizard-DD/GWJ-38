@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/mainChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/TestingLevel.tscn" type="PackedScene" id=2]
@@ -7,13 +7,14 @@
 [ext_resource path="res://levels/worldWrapperThing.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/menus/pauseMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/menus/unpauseCountdown.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Blackhole.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="testLevel" parent="." instance=ExtResource( 2 )]
 
 [node name="mainChar" parent="." instance=ExtResource( 1 )]
-position = Vector2( 24, 296 )
+position = Vector2( 89.0538, 296 )
 
 [node name="Camera2D" type="Camera2D" parent="mainChar"]
 position = Vector2( 132.96, -43.6012 )
@@ -40,5 +41,8 @@ margin_left = 61.1149
 margin_top = 140.485
 margin_right = 96.1149
 margin_bottom = 178.485
+
+[node name="BlackHole" parent="." instance=ExtResource( 8 )]
+position = Vector2( 15.3509, 296.83 )
 
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]

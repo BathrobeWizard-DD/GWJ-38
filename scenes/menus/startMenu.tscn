@@ -1,16 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/startMenu.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ButtonPress.wav" type="AudioStream" id=3]
+[ext_resource path="res://font/Pixeltype.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://art/TileSet/planet_huge.png" type="Texture" id=3]
+[ext_resource path="res://art/TileSet/sun.png" type="Texture" id=4]
+[ext_resource path="res://art/MC/Solarpunk.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+outline_size = 2
+outline_color = Color( 0.823529, 0.482353, 0.196078, 1 )
+font_data = ExtResource( 2 )
 
 [node name="startMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -366.574
-margin_top = -131.373
-margin_right = -366.574
-margin_bottom = -131.373
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -23,20 +27,22 @@ margin_left = 194.084
 margin_top = 27.4864
 margin_right = -211.916
 margin_bottom = -242.514
-rect_min_size = Vector2( 0, 50 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="titlePanel"]
+[node name="RichTextLabel" type="Label" parent="titlePanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 55.8701
-margin_top = 10.0547
-margin_right = -47.1299
-margin_bottom = 10.0547
-text = "GWJ 38
-Title Goes Here"
+margin_left = 52.916
+margin_top = 81.5136
+margin_right = -24.084
+margin_bottom = 144.514
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.933333, 0.819608, 1 )
+text = "ESCAPE VELOCITY
+GWJ #38"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -44,10 +50,10 @@ __meta__ = {
 [node name="btnStartGame" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 259.439
-margin_top = 104.301
-margin_right = -275.561
-margin_bottom = -145.699
+margin_left = 275.0
+margin_top = 170.0
+margin_right = -260.0
+margin_bottom = -78.0
 text = "START GAME"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -56,10 +62,10 @@ __meta__ = {
 [node name="btnOptions" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 116.439
-margin_top = 220.301
-margin_right = -437.561
-margin_bottom = -29.6989
+margin_left = 159.0
+margin_top = 221.0
+margin_right = -395.0
+margin_bottom = -27.0
 text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,19 +74,47 @@ __meta__ = {
 [node name="btnCredits" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 415.439
-margin_top = 225.301
-margin_right = -133.561
-margin_bottom = -24.6989
+margin_left = 409.0
+margin_top = 222.0
+margin_right = -140.0
+margin_bottom = -26.0
 text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" parent="." instance=ExtResource( 2 )]
+[node name="TextureRect1" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -47.5
+margin_top = 5.0
+margin_right = 0.5
+margin_bottom = 53.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="btnSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+[node name="sun" type="TextureRect" parent="."]
+margin_left = -1.0
+margin_top = -4.0
+margin_right = 95.0
+margin_bottom = 108.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 615.0
+margin_top = 47.0
+margin_right = 919.0
+margin_bottom = 335.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="btnStartGame" to="." method="_on_btnStartGame_pressed"]
 [connection signal="pressed" from="btnOptions" to="." method="_on_btnOptions_pressed"]

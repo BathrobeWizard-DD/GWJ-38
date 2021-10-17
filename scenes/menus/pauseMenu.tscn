@@ -37,18 +37,18 @@ __meta__ = {
 }
 
 [node name="controlBindingsMenu" parent="." instance=ExtResource( 1 )]
-margin_left = 92.0
-margin_top = 113.0
-margin_right = -91.0
-margin_bottom = -186.0
+margin_left = 84.6299
+margin_top = 84.0417
+margin_right = -98.3701
+margin_bottom = -185.958
 
 [node name="Resume" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 92.0
-margin_top = 211.0
-margin_right = -91.0
-margin_bottom = -118.0
+margin_left = 311.133
+margin_top = 206.791
+margin_right = -325.867
+margin_bottom = -41.2087
 text = "Resume"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -57,10 +57,10 @@ __meta__ = {
 [node name="mainMenu" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 92.0
-margin_top = 267.0
-margin_right = -91.0
-margin_bottom = -57.0
+margin_left = 302.034
+margin_top = 237.0
+margin_right = -313.966
+margin_bottom = -11.0
 text = "Quit to Main Menu"
 __meta__ = {
 "_edit_use_anchors_": false

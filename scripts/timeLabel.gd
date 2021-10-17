@@ -50,7 +50,7 @@ func time_to_string():
 	return str(minutesString,":",secondsString,":",millisecondString)
 
 func time_left():
-	print(str(time_remaining,":", time_left_milli))
+	#print(str(time_remaining,":", time_left_milli))
 	time_remaining = (starting_time - 1) - seconds
 	time_left_milli = 99 - milliseconds
 	if time_remaining <= 0:

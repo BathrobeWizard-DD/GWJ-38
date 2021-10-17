@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://levels/LevelOneMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/mainChar.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/menus/unpauseCountdown.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Blackhole.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/countdownTimerLabel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/obstacles/verticalObstacle.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/obstacles/horizontalObstacle.tscn" type="PackedScene" id=9]
 
 [node name="LevelOne" instance=ExtResource( 1 )]
 
@@ -43,5 +45,49 @@ starting_time = 45
 [node name="BlackHole" parent="." index="3" instance=ExtResource( 6 )]
 position = Vector2( -176.777, 305.47 )
 growthRate = 4.0
+
+[node name="verticalObstacle" parent="." index="4" instance=ExtResource( 8 )]
+position = Vector2( 1533.99, 285.364 )
+initPos = Vector2( 1528, 230 )
+destPos = Vector2( 1528, 285 )
+speedFactor = 2
+
+[node name="verticalObstacle2" parent="." index="5" instance=ExtResource( 8 )]
+position = Vector2( 1788.85, 231.787 )
+initPos = Vector2( 1780, 285 )
+destPos = Vector2( 1780, 230 )
+speedFactor = 2
+
+[node name="verticalObstacle3" parent="." index="6" instance=ExtResource( 8 )]
+
+[node name="verticalObstacle4" parent="." index="7" instance=ExtResource( 8 )]
+
+[node name="verticalObstacle5" parent="." index="8" instance=ExtResource( 8 )]
+
+[node name="verticalObstacle6" parent="." index="9" instance=ExtResource( 8 )]
+
+[node name="verticalObstacle7" parent="." index="10" instance=ExtResource( 8 )]
+
+[node name="verticalObstacle8" parent="." index="11" instance=ExtResource( 8 )]
+
+[node name="horizontalObstacle" parent="." index="12" instance=ExtResource( 9 )]
+position = Vector2( 1950, 285 )
+initPos = Vector2( 1950, 285 )
+destPos = Vector2( 2250, 285 )
+speedFactor = 6
+
+[node name="horizontalObstacle2" parent="." index="13" instance=ExtResource( 9 )]
+
+[node name="horizontalObstacle3" parent="." index="14" instance=ExtResource( 9 )]
+
+[node name="horizontalObstacle4" parent="." index="15" instance=ExtResource( 9 )]
+
+[node name="horizontalObstacle5" parent="." index="16" instance=ExtResource( 9 )]
+
+[node name="horizontalObstacle6" parent="." index="17" instance=ExtResource( 9 )]
+
+[node name="horizontalObstacle7" parent="." index="18" instance=ExtResource( 9 )]
+
+[node name="horizontalObstacle8" parent="." index="19" instance=ExtResource( 9 )]
 
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]

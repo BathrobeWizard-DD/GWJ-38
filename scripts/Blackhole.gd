@@ -23,3 +23,7 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if body.name == "mainChar":
 		emit_signal("mainCharEntered")
+
+
+func _on_Timer_timeout():
+	growthRate += 0.5

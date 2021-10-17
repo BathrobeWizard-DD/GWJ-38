@@ -1,6 +1,7 @@
 extends Control
 
 func _on_Resume_pressed():
+	ButtonPress.play()
 	visible = false
 	var countdownNode = get_node("../unpauseCountdown")
 	countdownNode.beginTimer()
@@ -8,6 +9,7 @@ func _on_Resume_pressed():
 	set_pause(false)
 
 func _on_mainMenu_pressed():
+	ButtonPress.play()
 	get_tree().paused = false
 	get_tree().change_scene("res://scenes/menus/startMenu.tscn")
 

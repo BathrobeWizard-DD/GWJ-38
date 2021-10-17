@@ -37,6 +37,7 @@ func _update_button_text(input_event: InputEvent) -> void:
 		text = input_event.as_text()
 
 func _on_quickBind_pressed():
+	ButtonPress.play()
 	var moveLeftInputKey = InputEventKey.new()
 	var moveRightInputKey = InputEventKey.new()
 	var crouchDownInputKey = InputEventKey.new()

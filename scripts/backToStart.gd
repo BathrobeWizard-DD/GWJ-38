@@ -17,5 +17,6 @@ func _ready():
 
 
 func _on_backButton_pressed():
+	ButtonPress.play()
 	get_tree().change_scene("res://scenes/menus/startMenu.tscn")
 	pass # Replace with function body.

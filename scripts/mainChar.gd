@@ -225,6 +225,7 @@ func input_crouching_check(event):
 
 func input_jumping_from_running_check(event):
 	if event.is_action_pressed("jumpUp") && is_on_floor():
+		$solarJumpNoise.play()
 		currentJumpSpeed = REGULAR_JUMP_SPEED
 		self.position.y -= 2
 		velocity.y = currentJumpSpeed
@@ -233,10 +234,12 @@ func input_jumping_from_running_check(event):
 func input_charging_check(event):
 	if left_key_pressed && right_key_pressed && event is InputEventKey:
 		if event.is_echo():
+			$charging.play()
 			switch_state(chargingState)
 
 func input_charging_release_check(event):
 	if !left_key_pressed || !right_key_pressed:
+		$charging.stop()
 		charTween.stop(self, "chargeVelocity")
 		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, currentRunSpeed + chargeVelocity, 0.2,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 		charTween.start()
@@ -244,6 +247,7 @@ func input_charging_release_check(event):
 
 func input_jumping_from_crouching_check(event):
 	if event.is_action("jumpUp") && is_on_floor():
+		$solarJumpNoise.play()
 		charTween.stop(self, "currentJumpSpeed")
 		self.position.y -= 2
 		velocity.y = currentJumpSpeed
@@ -263,9 +267,11 @@ func _on_worldWrapperThing_body_entered(body):
 
 
 func _on_BlackHole_mainCharEntered():
+	$charging.stop()
 	switch_state(gameOverState)
 	
 
 
 func _on_Label_timedOut():
+	$charging.stop()
 	switch_state(gameOverState)

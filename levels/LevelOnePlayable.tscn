@@ -32,11 +32,11 @@ margin_right = 178.406
 margin_bottom = 111.16
 
 [node name="Label" parent="CanvasLayer" index="2" instance=ExtResource( 7 )]
-margin_left = 250.316
+margin_left = 251.73
 margin_top = 29.6985
-margin_right = 418.316
+margin_right = 419.73
 margin_bottom = 69.6985
-starting_time = 30
+starting_time = 45
 
 [node name="BlackHole" parent="." index="3" instance=ExtResource( 6 )]
 position = Vector2( -176.777, 305.47 )

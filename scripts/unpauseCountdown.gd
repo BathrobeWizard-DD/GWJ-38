@@ -22,6 +22,7 @@ func beginTimer():
 	currentTime = timerStart
 	updateTimerText(str(currentTime))
 	$TimerObj.start(timerInterval)
+	print(self.rect_position)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

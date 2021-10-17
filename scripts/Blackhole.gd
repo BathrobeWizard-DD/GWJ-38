@@ -1,7 +1,7 @@
 extends Node2D
 
 export var blackholeSize = 10
-export var growthRate = 1
+export var growthRate = 1.0
 var innerCircleColor = Color( 1, 1, 1, 1)
 var outerCircleColor = Color( 0, 0, 0, 1)
 signal mainCharEntered()

@@ -5,4 +5,5 @@
 
 [node name="ButtonPress" type="AudioStreamPlayer"]
 stream = ExtResource( 2 )
+volume_db = -33.0
 script = ExtResource( 1 )

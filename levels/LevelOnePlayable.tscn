@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://levels/LevelOneMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/mainChar.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/obstacles/verticalObstacle.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/obstacles/horizontalObstacle.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/menus/gameOverMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://art/wormhole_exit.png" type="Texture" id=11]
 
 [node name="LevelOne2" instance=ExtResource( 1 )]
 
@@ -23,6 +24,16 @@ drag_margin_v_enabled = true
 
 [node name="worldWrapperThing" parent="." index="1" instance=ExtResource( 3 )]
 position = Vector2( 9128.59, 123.148 )
+
+[node name="TextureRect" type="TextureRect" parent="worldWrapperThing" index="1"]
+margin_left = -37.0
+margin_top = -77.3625
+margin_right = 91.0
+margin_bottom = 114.638
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
 
@@ -47,7 +58,7 @@ starting_time = 35
 
 [node name="BlackHole" parent="." index="3" instance=ExtResource( 6 )]
 position = Vector2( -317.085, 296.49 )
-growthRate = 1.5
+growthRate = 4.0
 
 [node name="verticalObstacle" parent="." index="4" instance=ExtResource( 8 )]
 position = Vector2( 1533.99, 285.364 )

@@ -28,6 +28,7 @@ config/icon="res://icon.png"
 
 ThemeMusic="res://ThemeMusic.tscn"
 ButtonPress="*res://ButtonPress.tscn"
+Score="*res://score.gd"
 
 [display]
 

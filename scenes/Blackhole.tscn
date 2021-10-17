@@ -1,16 +1,70 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Blackhole.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/Blackhole.gdshader" type="Shader" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 3 )
+shader_param/center = Vector2( 0.359, 0.529 )
+shader_param/force = 0.3
+shader_param/size = 0.961
+shader_param/thickness = 0.096
+
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+noise = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 3 )
+shader_param/center = null
+shader_param/force = null
+shader_param/size = null
+shader_param/thickness = null
+
+[sub_resource type="OpenSimplexNoise" id=7]
+
+[sub_resource type="NoiseTexture" id=8]
+seamless = true
+noise = SubResource( 7 )
+
 [node name="BlackHole" type="Node2D"]
 script = ExtResource( 1 )
-growthRate = 4
+__meta__ = {
+"_edit_group_": true,
+"_edit_horizontal_guides_": [ 442640.0 ]
+}
+growthRate = 0.1
+innerCircleColor = Color( 0.65098, 0.239216, 0.168627, 1 )
+outerCircleColor = Color( 0.0627451, 0.054902, 0.0941176, 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+material = SubResource( 3 )
+position = Vector2( 0, 68 )
+texture = SubResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -336.0
+margin_top = -250.0
+margin_right = 512.0
+margin_bottom = 512.0
+texture = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -59,6 +59,10 @@ destPos = Vector2( 1780, 230 )
 speedFactor = 2
 
 [node name="verticalObstacle3" parent="." index="6" instance=ExtResource( 8 )]
+position = Vector2( 2530, 242.452 )
+initPos = Vector2( 2530, 285 )
+destPos = Vector2( 2530, 230 )
+speedFactor = 2
 
 [node name="verticalObstacle4" parent="." index="7" instance=ExtResource( 8 )]
 
@@ -71,16 +75,24 @@ speedFactor = 2
 [node name="verticalObstacle8" parent="." index="11" instance=ExtResource( 8 )]
 
 [node name="horizontalObstacle" parent="." index="12" instance=ExtResource( 9 )]
-position = Vector2( 1950, 285 )
-initPos = Vector2( 1950, 285 )
-destPos = Vector2( 2250, 285 )
-speedFactor = 6
+position = Vector2( 1950, 290 )
+initPos = Vector2( 1950, 300 )
+destPos = Vector2( 2150, 300 )
 
 [node name="horizontalObstacle2" parent="." index="13" instance=ExtResource( 9 )]
+position = Vector2( 2250, 300 )
+initPos = Vector2( 2450, 300 )
+destPos = Vector2( 2250, 300 )
 
 [node name="horizontalObstacle3" parent="." index="14" instance=ExtResource( 9 )]
+position = Vector2( 2068.22, 178.891 )
+initPos = Vector2( 2070, 178 )
+destPos = Vector2( 2270, 178 )
 
 [node name="horizontalObstacle4" parent="." index="15" instance=ExtResource( 9 )]
+position = Vector2( 2190, 100 )
+initPos = Vector2( 2390, 100 )
+destPos = Vector2( 2190, 100 )
 
 [node name="horizontalObstacle5" parent="." index="16" instance=ExtResource( 9 )]
 

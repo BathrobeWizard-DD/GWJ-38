@@ -154,7 +154,8 @@ func process_running():
 		switch_state(jumpingState)
 
 func process_crouching():
-	$jumpChargeGauge.set_value(-(currentJumpSpeed - REGULAR_JUMP_SPEED))
+	if is_on_floor():
+		$jumpChargeGauge.set_value(-(currentJumpSpeed - REGULAR_JUMP_SPEED))
 	pass
 
 func process_jumping():

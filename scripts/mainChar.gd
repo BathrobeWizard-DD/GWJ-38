@@ -144,7 +144,7 @@ func ready_gameOver():
 
 func ready_charging():
 	sprite.charge()
-	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 	charTween.start()
 
 func process_running():
@@ -238,7 +238,7 @@ func input_charging_check(event):
 func input_charging_release_check(event):
 	if !left_key_pressed || !right_key_pressed:
 		charTween.stop(self, "chargeVelocity")
-		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, currentRunSpeed + chargeVelocity, 0.5,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
+		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, currentRunSpeed + chargeVelocity, 0.2,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 		charTween.start()
 		switch_state(runningState)
 

@@ -17,13 +17,25 @@ var first_second = true
 signal timedOut()
 
 func _ready():
-	pass
+	text = time_left_to_string()
 
 func _process(delta):
 	if start:
 		process_count_up_timer(delta)
 		time_left()
 	text = time_left_to_string()
+
+func pause_timer():
+	start = false
+
+func start_timer():
+	start = true
+
+func get_time_string():
+	return str(minutesString,":",secondsString,":",millisecondString)
+
+func get_time_array():
+	return [minutesString, secondsString ,millisecondString]
 
 func process_count_up_timer(delta):
 	time_accumulation += delta

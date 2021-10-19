@@ -11,7 +11,7 @@ const RUN_SPEED_MIN = 130
 const RUN_SPEED_MAX = 270
 const REGULAR_JUMP_SPEED = -300
 const FROM_CROUCH_JUMP_SPEED = -400
-const MAX_CHARGE_SPEED = 50
+const MAX_CHARGE_SPEED = 100
 
 var velocity := Vector2()
 var currentRunSpeed = (RUN_SPEED_MIN + RUN_SPEED_MAX) / 2
@@ -148,7 +148,7 @@ func ready_gameOver():
 
 func ready_charging():
 	sprite.charge()
-	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 0.2, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+	charTween.interpolate_property(self, "chargeVelocity", chargeVelocity, MAX_CHARGE_SPEED, 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 	charTween.start()
 
 func process_running():

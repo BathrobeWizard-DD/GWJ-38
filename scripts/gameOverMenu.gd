@@ -4,7 +4,7 @@ func _ready():
 	visible = false
 
 func showGameOver():
-	get_parent().get_node("Label/Timer").pause_timer()
+	get_parent().get_node("Label").pause_timer()
 	visible = true
 
 func _on_playAgain_pressed():

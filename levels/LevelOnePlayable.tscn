@@ -163,5 +163,6 @@ speedFactor = 2
 
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]
 [connection signal="body_entered" from="worldWrapperThing" to="CanvasLayer/gameWon" method="_on_worldWrapperThing_body_entered"]
+[connection signal="body_entered" from="worldWrapperThing" to="CanvasLayer/Label" method="_on_worldWrapperThing_body_entered"]
 [connection signal="timedOut" from="CanvasLayer/Label" to="mainChar" method="_on_Label_timedOut"]
 [connection signal="timedOut" from="CanvasLayer/Label" to="CanvasLayer/gameOverMenu" method="_on_Label_timedOut"]

@@ -22,8 +22,8 @@ func _ready():
 func _process(delta):
 	if start:
 		process_count_up_timer(delta)
-		time_left()
-	text = time_left_to_string()
+		#time_left()
+	text = time_to_string()
 
 func pause_timer():
 	start = false
@@ -35,7 +35,7 @@ func get_time_string():
 	return str(minutesString,":",secondsString,":",millisecondString)
 
 func get_time_array():
-	return [minutesString, secondsString ,millisecondString]
+	return [minutes, seconds , milliseconds]
 
 func process_count_up_timer(delta):
 	time_accumulation += delta
@@ -97,3 +97,10 @@ func time_left_to_string():
 	else:
 		minutesString = str(time_left_min)
 	return str(minutesString,":",secondsString,":",millisecondString)
+
+
+func _on_worldWrapperThing_body_entered(body):
+	if (body.get_name() == "mainChar"):
+		pause_timer()
+		if Score.score[0] < get_time_array()[0] && Score.score[1] < get_time_array()[1] && Score.score[2] < get_time_array()[2]:
+			Score.score_string = get_time_string()

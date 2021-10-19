@@ -3,8 +3,7 @@ extends Control
 func _ready():
 	visible = false
 
-func showGameOver():
-	get_parent().get_node("Label/Timer").pause_timer()
+func gameWon():
 	visible = true
 
 func _on_playAgain_pressed():
@@ -18,11 +17,6 @@ func _on_mainMenu_pressed():
 	pass # Replace with function body.
 
 
-func _on_BlackHole_mainCharEntered():
-	showGameOver()
-	pass # Replace with function body.
-
-
-func _on_Label_timedOut():
-	showGameOver()
-	pass # Replace with function body.
+func _on_worldWrapperThing_body_entered(body):
+	if (body.get_name() == "mainChar"):
+		gameWon()

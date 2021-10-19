@@ -265,12 +265,9 @@ func _on_worldWrapperThing_body_entered(body):
 	if (body.position.y >= 360):
 		body.position.y = 290
 
-
 func _on_BlackHole_mainCharEntered():
 	$charging.stop()
 	switch_state(gameOverState)
-	
-
 
 func _on_Label_timedOut():
 	$charging.stop()

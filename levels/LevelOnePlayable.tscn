@@ -5,7 +5,7 @@
 [ext_resource path="res://levels/worldWrapperThing.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/menus/pauseMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/menus/unpauseCountdown.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/Blackhole.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/menus/gameWonMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/countdownTimerLabel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/obstacles/verticalObstacle.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/obstacles/horizontalObstacle.tscn" type="PackedScene" id=9]
@@ -48,121 +48,120 @@ margin_right = 178.406
 margin_bottom = 111.16
 
 [node name="gameOverMenu" parent="CanvasLayer" index="2" instance=ExtResource( 10 )]
+visible = false
 
-[node name="Label" parent="CanvasLayer" index="3" instance=ExtResource( 7 )]
+[node name="gameWon" parent="CanvasLayer" index="3" instance=ExtResource( 6 )]
+visible = false
+
+[node name="Label" parent="CanvasLayer" index="4" instance=ExtResource( 7 )]
 margin_left = 251.73
 margin_top = 29.6985
 margin_right = 419.73
 margin_bottom = 69.6985
 starting_time = 35
 
-[node name="BlackHole" parent="." index="3" instance=ExtResource( 6 )]
-position = Vector2( -317.085, 296.49 )
-growthRate = 4.0
-
-[node name="verticalObstacle" parent="." index="4" instance=ExtResource( 8 )]
+[node name="verticalObstacle" parent="." index="3" instance=ExtResource( 8 )]
 position = Vector2( 1533.99, 285.364 )
 initPos = Vector2( 1528, 230 )
 destPos = Vector2( 1528, 285 )
 speedFactor = 2
 
-[node name="verticalObstacle2" parent="." index="5" instance=ExtResource( 8 )]
+[node name="verticalObstacle2" parent="." index="4" instance=ExtResource( 8 )]
 position = Vector2( 1788.85, 231.787 )
 initPos = Vector2( 1780, 285 )
 destPos = Vector2( 1780, 230 )
 speedFactor = 2
 
-[node name="verticalObstacle3" parent="." index="6" instance=ExtResource( 8 )]
+[node name="verticalObstacle3" parent="." index="5" instance=ExtResource( 8 )]
 position = Vector2( 2530, 242.452 )
 initPos = Vector2( 2530, 285 )
 destPos = Vector2( 2530, 230 )
 speedFactor = 2
 
-[node name="verticalObstacle4" parent="." index="7" instance=ExtResource( 8 )]
+[node name="verticalObstacle4" parent="." index="6" instance=ExtResource( 8 )]
 position = Vector2( 3447.68, 300.124 )
 initPos = Vector2( 3448, 300 )
 destPos = Vector2( 3448, 250 )
 
-[node name="verticalObstacle5" parent="." index="8" instance=ExtResource( 8 )]
+[node name="verticalObstacle5" parent="." index="7" instance=ExtResource( 8 )]
 position = Vector2( 4616, 279.031 )
 initPos = Vector2( 4616, 280 )
 destPos = Vector2( 4616, 302 )
 speedFactor = 2
 
-[node name="verticalObstacle6" parent="." index="9" instance=ExtResource( 8 )]
+[node name="verticalObstacle6" parent="." index="8" instance=ExtResource( 8 )]
 position = Vector2( 4792, 302 )
 initPos = Vector2( 4792, 302 )
 destPos = Vector2( 4792, 280 )
 speedFactor = 2
 
-[node name="verticalObstacle7" parent="." index="10" instance=ExtResource( 8 )]
+[node name="verticalObstacle7" parent="." index="9" instance=ExtResource( 8 )]
 position = Vector2( 6758.97, 170 )
 initPos = Vector2( 6760, 170 )
 destPos = Vector2( 6760, 225 )
 speedFactor = 2
 
-[node name="verticalObstacle8" parent="." index="11" instance=ExtResource( 8 )]
+[node name="verticalObstacle8" parent="." index="10" instance=ExtResource( 8 )]
 position = Vector2( 6946, 225 )
 initPos = Vector2( 6946, 225 )
 destPos = Vector2( 6946, 170 )
 speedFactor = 2
 
-[node name="verticalObstacle9" parent="." index="12" instance=ExtResource( 8 )]
+[node name="verticalObstacle9" parent="." index="11" instance=ExtResource( 8 )]
 position = Vector2( 7132, 225 )
 initPos = Vector2( 7132, 225 )
 destPos = Vector2( 7132, 170 )
 speedFactor = 2
 
-[node name="verticalObstacle10" parent="." index="13" instance=ExtResource( 8 )]
+[node name="verticalObstacle10" parent="." index="12" instance=ExtResource( 8 )]
 position = Vector2( 7320, 170 )
 initPos = Vector2( 7320, 170 )
 destPos = Vector2( 7320, 225 )
 speedFactor = 2
 
-[node name="horizontalObstacle" parent="." index="14" instance=ExtResource( 9 )]
+[node name="horizontalObstacle" parent="." index="13" instance=ExtResource( 9 )]
 position = Vector2( 1950, 290 )
 initPos = Vector2( 1950, 300 )
 destPos = Vector2( 2150, 300 )
 
-[node name="horizontalObstacle2" parent="." index="15" instance=ExtResource( 9 )]
+[node name="horizontalObstacle2" parent="." index="14" instance=ExtResource( 9 )]
 position = Vector2( 2250, 300 )
 initPos = Vector2( 2450, 300 )
 destPos = Vector2( 2250, 300 )
 
-[node name="horizontalObstacle3" parent="." index="16" instance=ExtResource( 9 )]
+[node name="horizontalObstacle3" parent="." index="15" instance=ExtResource( 9 )]
 position = Vector2( 2068.22, 178.891 )
 initPos = Vector2( 2070, 178 )
 destPos = Vector2( 2270, 178 )
 
-[node name="horizontalObstacle4" parent="." index="17" instance=ExtResource( 9 )]
+[node name="horizontalObstacle4" parent="." index="16" instance=ExtResource( 9 )]
 position = Vector2( 2190, 100 )
 initPos = Vector2( 2390, 100 )
 destPos = Vector2( 2190, 100 )
 
-[node name="horizontalObstacle5" parent="." index="18" instance=ExtResource( 9 )]
+[node name="horizontalObstacle5" parent="." index="17" instance=ExtResource( 9 )]
 position = Vector2( 2500, 178 )
 initPos = Vector2( 2500, 178 )
 destPos = Vector2( 2700, 178 )
 
-[node name="horizontalObstacle6" parent="." index="19" instance=ExtResource( 9 )]
+[node name="horizontalObstacle6" parent="." index="18" instance=ExtResource( 9 )]
 position = Vector2( 2631.05, 92.0419 )
 initPos = Vector2( 2880, 100 )
 destPos = Vector2( 2680, 100 )
 
-[node name="horizontalObstacle7" parent="." index="20" instance=ExtResource( 9 )]
+[node name="horizontalObstacle7" parent="." index="19" instance=ExtResource( 9 )]
 position = Vector2( 3650, 305 )
 initPos = Vector2( 3650, 305 )
 destPos = Vector2( 3900, 305 )
 speedFactor = 4
 
-[node name="horizontalObstacle8" parent="." index="21" instance=ExtResource( 9 )]
+[node name="horizontalObstacle8" parent="." index="20" instance=ExtResource( 9 )]
 position = Vector2( 6760, 260.093 )
 initPos = Vector2( 6760, 260 )
 destPos = Vector2( 7325, 260 )
 speedFactor = 2
 
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]
+[connection signal="body_entered" from="worldWrapperThing" to="CanvasLayer/gameWon" method="_on_worldWrapperThing_body_entered"]
 [connection signal="timedOut" from="CanvasLayer/Label" to="mainChar" method="_on_Label_timedOut"]
 [connection signal="timedOut" from="CanvasLayer/Label" to="CanvasLayer/gameOverMenu" method="_on_Label_timedOut"]
-[connection signal="mainCharEntered" from="BlackHole" to="mainChar" method="_on_BlackHole_mainCharEntered"]
-[connection signal="mainCharEntered" from="BlackHole" to="CanvasLayer/gameOverMenu" method="_on_BlackHole_mainCharEntered"]

@@ -20,3 +20,8 @@ func _on_mainMenu_pressed():
 func _on_worldWrapperThing_body_entered(body):
 	if (body.get_name() == "mainChar"):
 		gameWon()
+
+
+func _on_Label_score_updated():
+	$currentScore.text = str("Score\n", Score.current_score_string)
+	$highScore.text = str("High Score\n", Score.score_string)

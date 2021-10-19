@@ -15,6 +15,7 @@ var time_left_sec = 0
 var time_left_min = 0
 var first_second = true
 signal timedOut()
+signal score_updated()
 
 func _ready():
 	text = time_left_to_string()
@@ -102,5 +103,8 @@ func time_left_to_string():
 func _on_worldWrapperThing_body_entered(body):
 	if (body.get_name() == "mainChar"):
 		pause_timer()
-		if Score.score[0] < get_time_array()[0] && Score.score[1] < get_time_array()[1] && Score.score[2] < get_time_array()[2]:
+		Score.current_score_string = get_time_string()
+		if Score.time_acum > time_accumulation:
+			Score.time_acum = time_accumulation
 			Score.score_string = get_time_string()
+		emit_signal("score_updated")

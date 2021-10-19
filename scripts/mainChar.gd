@@ -261,6 +261,7 @@ func charging_boost():
 
 func _on_worldWrapperThing_body_entered(body):
 	if (body.get_name() == "mainChar"):
+		self.pause_mode = Node.PAUSE_MODE_STOP
 		body.position.x = 24
 	if (body.position.y >= 360):
 		body.position.y = 290

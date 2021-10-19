@@ -12,7 +12,7 @@
 [ext_resource path="res://scenes/menus/gameOverMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://art/wormhole_exit.png" type="Texture" id=11]
 
-[node name="LevelOne2" instance=ExtResource( 1 )]
+[node name="LevelOne" instance=ExtResource( 1 )]
 
 [node name="mainChar" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( -227.919, 296.574 )
@@ -164,5 +164,6 @@ speedFactor = 2
 [connection signal="body_entered" from="worldWrapperThing" to="mainChar" method="_on_worldWrapperThing_body_entered"]
 [connection signal="body_entered" from="worldWrapperThing" to="CanvasLayer/gameWon" method="_on_worldWrapperThing_body_entered"]
 [connection signal="body_entered" from="worldWrapperThing" to="CanvasLayer/Label" method="_on_worldWrapperThing_body_entered"]
+[connection signal="score_updated" from="CanvasLayer/Label" to="CanvasLayer/gameWon" method="_on_Label_score_updated"]
 [connection signal="timedOut" from="CanvasLayer/Label" to="mainChar" method="_on_Label_timedOut"]
 [connection signal="timedOut" from="CanvasLayer/Label" to="CanvasLayer/gameOverMenu" method="_on_Label_timedOut"]

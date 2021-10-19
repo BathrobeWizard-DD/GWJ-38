@@ -41,7 +41,7 @@ margin_bottom = 144.514
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.968627, 0.933333, 0.819608, 1 )
 text = "ESCAPE VELOCITY
-GWJ #38"
+Mamma's Edition"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

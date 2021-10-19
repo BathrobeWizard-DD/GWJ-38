@@ -11,7 +11,7 @@ const RUN_SPEED_MIN = 130
 const RUN_SPEED_MAX = 270
 const REGULAR_JUMP_SPEED = -300
 const FROM_CROUCH_JUMP_SPEED = -400
-const MAX_CHARGE_SPEED = 75
+const MAX_CHARGE_SPEED = 50
 
 var velocity := Vector2()
 var currentRunSpeed = (RUN_SPEED_MIN + RUN_SPEED_MAX) / 2
@@ -83,10 +83,14 @@ func character_function_args(function, argumentArray):
 		characterState[function].call_funcv(argumentArray)
 
 func speedUpOrSlowDown(directionMultiplier, speedDelta = RUN_ACCEL):
-	currentRunSpeed = clamp(
-		currentRunSpeed + (directionMultiplier * speedDelta),
-		RUN_SPEED_MIN, RUN_SPEED_MAX
-	)
+	if currentRunSpeed <= RUN_SPEED_MAX:
+		currentRunSpeed = clamp(
+			currentRunSpeed + (directionMultiplier * speedDelta),
+			RUN_SPEED_MIN, RUN_SPEED_MAX)
+	else:
+		currentRunSpeed = clamp(
+			currentRunSpeed + (directionMultiplier * speedDelta),
+			RUN_SPEED_MIN, RUN_SPEED_MAX + chargeVelocity)
 
 func _input(event):
 	input_tracker(event)
@@ -144,7 +148,7 @@ func ready_gameOver():
 
 func ready_charging():
 	sprite.charge()
-	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+	charTween.interpolate_property(self, "chargeVelocity", 0, MAX_CHARGE_SPEED, 0.2, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 	charTween.start()
 
 func process_running():
@@ -241,7 +245,7 @@ func input_charging_release_check(event):
 	if !left_key_pressed || !right_key_pressed:
 		$charging.stop()
 		charTween.stop(self, "chargeVelocity")
-		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, currentRunSpeed + chargeVelocity, 0.2,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
+		charTween.interpolate_property(self, "currentRunSpeed", currentRunSpeed, min(currentRunSpeed + chargeVelocity, RUN_SPEED_MAX + MAX_CHARGE_SPEED), 0.1,Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 		charTween.start()
 		switch_state(runningState)
 
